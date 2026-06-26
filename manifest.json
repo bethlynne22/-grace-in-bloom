@@ -3,7 +3,7 @@
   "short_name": "Grace",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#eef6e8",
+  "background_color": "#eadcc4",
   "theme_color": "#7a4a2c",
   "icons": [
     {
