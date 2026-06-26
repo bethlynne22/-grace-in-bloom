@@ -1,1 +1,12 @@
-Upload index.html, styles.css, app.js, manifest.json, and icon.svg to GitHub root to replace the prior version.
+Grace in Bloom Pencil Fix
+
+Upload this app.js file to GitHub and replace the old app.js.
+
+This fixes drawing/coloring so it works better with:
+- finger
+- Apple Pencil
+- many off-brand iPad styluses
+- Safari touch events
+
+You only need to upload:
+app.js
