@@ -1,1 +1,1 @@
-Upload all files to GitHub: index.html, styles.css, app.js, manifest.json, icon.svg, forest-family.png
+Upload all files to GitHub: index.html, styles.css, app.js, manifest.json, icon.svg, home-art.png
