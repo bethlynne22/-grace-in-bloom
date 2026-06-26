@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grace in Bloom</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+<nav>
+<button onclick="go('home')">🏡 Home</button>
+<button onclick="go('toc')">📑 Contents</button>
+<button onclick="go('study')">📖 Study</button>
+<button onclick="go('listen')">🎧 Listen</button>
+<button onclick="go('kids')">🐇 Kids</button>
+<button onclick="go('devotions')">🌸 Devotions</button>
+<button onclick="go('prayer')">🙏 Prayer</button>
+<button onclick="go('journal')">✍️ Journal</button>
+<button onclick="go('sermons')">⛪ Sermons</button>
+<button onclick="go('groups')">🤝 Groups</button>
+<button onclick="go('puzzles')">🧩 Puzzles</button>
+<button onclick="go('jewish')">✡️ Jewish Roots</button>
+<button onclick="go('feelings')">💛 Feelings</button>
+<button onclick="go('trackers')">🍯 Trackers</button>
+</nav>
+<main>
+<section id="home" class="page show">
+<img class="cover" src="assets/cover.png" alt="">
+<h1>Grace in Bloom</h1>
+<h2>The Honeycomb & Wildflowers Bible Collection</h2>
+<p>Founder Edition • Created by Beth Henry</p>
+<p class="verse">“How sweet are Your words to my taste, sweeter than honey to my mouth!”<br><b>Psalm 119:103</b></p>
+<button class="big" onclick="go('study')">Continue Reading</button>
+<button class="big" onclick="go('prayer')">Prayer Today</button>
+</section>
+
+<section id="toc" class="page"><h1>Table of Contents</h1><p>Choose Study, Kids, or Audio for each Bible book.</p><div id="books"></div></section>
+
+<section id="study" class="page"><h1>Genesis 1 Study</h1>
+<div class="card honey"><h2>🍯 Honey Drop</h2><p>God creates with purpose, order, beauty, and goodness.</p></div>
+<div class="card"><h2>📖 Read</h2><p><b>Passage:</b> Genesis 1</p><p>Add your preferred Bible translation here later. For sharing, use public-domain WEB or KJV.</p></div>
+<div class="card"><h2>Heart of the Chapter</h2><p>Genesis 1 shows God as Creator. He speaks, forms, fills, blesses, and calls His creation good.</p></div>
+<div class="card"><h2>My Notes</h2><textarea id="studyNotes"></textarea></div></section>
+
+<section id="listen" class="page"><h1>Listen & Read</h1><div class="card"><p>Soft female narration will go here later. For now, paste an audio link here.</p><input id="audioLink" placeholder="Paste audio link here later"><label><input type="checkbox" data-key="listenDone"> I listened and read along</label></div></section>
+
+<section id="kids" class="page"><h1>Kids Story: Genesis 1</h1><div class="card"><p><b>Oliver Bunny says:</b> “Come with me! Today we learn how God made the world.”</p><p>God made light, sky, land, plants, stars, animals, and people. Everything God made was good.</p></div><textarea id="kidsNotes" placeholder="Kids notes or drawing idea..."></textarea></section>
+
+<section id="devotions" class="page"><h1>January Devotions</h1><div id="jan"></div></section>
+
+<section id="prayer" class="page"><h1>Prayer Garden</h1><div class="grid"><div class="card"><h2>Prayer Requests</h2><textarea id="prayerReq"></textarea></div><div class="card"><h2>Answered Prayers</h2><textarea id="answered"></textarea></div></div><div class="card"><h2>Gratitude</h2><textarea id="gratitude"></textarea></div></section>
+
+<section id="journal" class="page"><h1>Journal</h1><textarea id="journal" placeholder="Write, pray, sketch ideas, or reflect here..."></textarea></section>
+
+<section id="sermons" class="page"><h1>Weekly Sermon Notes</h1><div class="card"><input id="church" placeholder="Church"><input id="speaker" placeholder="Speaker"><input id="title" placeholder="Message title"><textarea id="sermon" placeholder="Notes, Honey Drops, prayer, application..."></textarea></div></section>
+
+<section id="groups" class="page"><h1>Bible Group</h1><div class="card"><h2>Genesis 1 Discussion</h2><p>What does creation teach us about God?</p><textarea id="groupNotes" placeholder="Discussion notes and prayer requests..."></textarea></div></section>
+
+<section id="puzzles" class="page"><h1>Bible Puzzles</h1><div class="card"><h2>Genesis 1 Word Search Words</h2><p>GOD • LIGHT • EARTH • HEAVEN • WATER • DAY • NIGHT • SUN • MOON • STARS • CREATE • GOOD</p></div><div class="card"><h2>Crossword Starter</h2><p>Across: God said, “Let there be ____.”</p><p>Down: God called the dry land ____.</p></div></section>
+
+<section id="jewish" class="page"><h1>Jewish Roots & Biblical Feasts</h1><div class="card"><h2>Passover / Pesach / פֶּסַח</h2><p><b>Meaning:</b> Passover</p><p><b>Biblical foundation:</b> Exodus 12; Leviticus 23</p><p><b>Theme:</b> Deliverance, remembrance, redemption.</p></div></section>
+
+<section id="feelings" class="page"><h1>Feelings & Scripture</h1><div class="grid"><div class="card"><h2>Anxious</h2><p>Philippians 4:6–7</p></div><div class="card"><h2>Afraid</h2><p>Isaiah 41:10</p></div><div class="card"><h2>Lonely</h2><p>Psalm 34:18</p></div><div class="card"><h2>Need Wisdom</h2><p>James 1:5</p></div></div></section>
+
+<section id="trackers" class="page"><h1>Trackers</h1><div class="card"><label><input type="checkbox" data-key="read"> Read</label><label><input type="checkbox" data-key="audio"> Audio</label><label><input type="checkbox" data-key="pray"> Prayer</label><label><input type="checkbox" data-key="journalDone"> Journal</label><label><input type="checkbox" data-key="art"> Art</label></div></section>
+</main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

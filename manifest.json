@@ -1,0 +1,15 @@
+{
+  "name": "Grace in Bloom",
+  "short_name": "Grace in Bloom",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fff7ea",
+  "theme_color": "#d98b91",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
