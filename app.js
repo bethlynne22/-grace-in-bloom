@@ -1,134 +1,21 @@
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById(id).classList.add('show');location.hash=id;setTimeout(resizeCanvases,150)}
+let currentChapter=Number(localStorage.getItem('currentChapter')||1);
+const chapters={1:{title:'Genesis 1',lead:'Creation Garden — God creates with light, order, beauty, purpose, and goodness.',memory:'In the beginning God created the heavens and the earth.',hebrew:'בְּרֵאשִׁית',translit:'Bereshit',sound:'beh-ray-SHEET',meaning:'In the beginning',honey:'Before anything else begins, God is already present, powerful, and good.',read:['Genesis 1:1 — In the beginning, God created the heavens and the earth.','Genesis 1:3 — God said, “Let there be light,” and there was light.','Genesis 1:31 — God saw everything that he had made, and, behold, it was very good.'],cards:['Day 1: Light — God brings light into darkness.','Day 2: Sky — God creates space for life to flourish.','Day 3: Land & Plants — God fills the earth with beauty.','Day 4: Sun, Moon & Stars — God orders time with care.','Day 5: Birds & Fish — Life overflows from God’s command.','Day 6: Animals & Humanity — You are created with sacred worth.','Day 7: Rest — Rest belongs in God’s good design.'],comic:[['Before Light','Arnav whispers, “What was here before everything?”'],['God Spoke','“Let there be light!” Golden light fills the forest.'],['Tikvah Smiles','“God creates with love and purpose.”'],['Very Good','The woodland friends gather around the open Bible.']],words:['GOD','LIGHT','EARTH','WATER','DAY','NIGHT','SUN','MOON','STARS','GOOD'],prayer:'Creator God, thank You for light, life, beauty, order, and purpose. Help me see Your goodness today. Amen.',color:'<rect width="900" height="500" fill="#fffdf7"/><circle cx="120" cy="95" r="55" fill="none" stroke="#4f3d36" stroke-width="4"/><path d="M0 370 C140 300 280 410 420 340 S660 320 900 380" fill="none" stroke="#4f3d36" stroke-width="4"/><text x="450" y="460" text-anchor="middle" font-family="Georgia" font-size="30" fill="#4f3d36">Let there be light.</text><text x="350" y="250" font-size="80">🦌 🐇 🐝</text>'},
+2:{title:'Genesis 2',lead:'Garden of Eden — God gives rest, breath, belonging, meaningful work, and relationship.',memory:'Yahweh God formed man from the dust of the ground, and breathed into his nostrils the breath of life.',hebrew:'עֵדֶן',translit:'Eden',sound:'AY-den',meaning:'Delight / Eden',honey:'God does not only create the world; He creates a place of belonging.',read:['Genesis 2:2 — On the seventh day God finished his work which he had made; and he rested.','Genesis 2:7 — Yahweh God formed man from the dust of the ground, and breathed into his nostrils the breath of life.','Genesis 2:15 — Yahweh God took the man, and put him into the garden of Eden to cultivate and keep it.'],cards:['Rest — God blesses the seventh day and makes it holy.','Breath — God forms humanity and breathes life.','Garden — God plants Eden as beauty and provision.','Work — God gives meaningful care and stewardship.','Relationship — God shows people were made for connection.'],comic:[['The Garden Path','Tikvah steps softly into a green garden.'],['Breath of Life','Arnav asks, “God breathed life?” Dvorah buzzes, “Yes, life is a gift.”'],['Work and Care','Mayan finds a stream and learns gardens need tending.'],['Not Alone','The friends sit together beneath a tree of belonging.']],words:['EDEN','GARDEN','REST','BREATH','DUST','TREE','RIVER','HELPER','WORK','LIFE'],prayer:'Lord, help me receive rest, honor the life You breathed into me, and care for the place You have given me. Amen.',color:'<rect width="900" height="500" fill="#fffdf7"/><path d="M0 390 C160 300 310 410 450 330 S680 315 900 380" fill="none" stroke="#4f3d36" stroke-width="4"/><path d="M420 390 C410 250 470 210 500 360 C540 210 610 250 580 390" fill="none" stroke="#4f3d36" stroke-width="4"/><text x="450" y="460" text-anchor="middle" font-family="Georgia" font-size="30" fill="#4f3d36">God planted a garden.</text><text x="300" y="260" font-size="75">🦌 🦝 🐇</text>'}};
+function setChapter(n){currentChapter=n;localStorage.setItem('currentChapter',n);renderAll()}
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById(id).classList.add('show');location.hash=id;renderAll();setTimeout(resizeCanvases,150)}
 if(location.hash)go(location.hash.slice(1));
-
-const visitors=['🦌 Tikvah','🐇 Arnav','🐻 Boaz','🦊 Tamar','🐦 Shirah','🐝 Dvorah','🦉 Ezra','🐿️ Netzer','🦨 Perach','🦝 Mayan','🐼 Hadassah','🐌 Menucha','🦔 Gefen','🐿️ Chazak','🐍 Nachash','🦋 Nitzan','🪲 Ziv','✨ Or'];
-const visitorEl=document.getElementById('visitor');
-if(visitorEl) visitorEl.textContent=visitors[new Date().getDate()%visitors.length];
-
-function prayerForTime(){
-  let h=new Date().getHours();
-  if(h>=5&&h<11)return['Morning Prayer','Dear God, thank You for this new day. Fill my heart with peace and joy as I seek You today. Amen.'];
-  if(h>=11&&h<16)return['Midday Prayer','Lord, meet me in the middle of this day. Help me pause, breathe, and remember Your goodness. Amen.'];
-  if(h>=16&&h<20)return['Evening Prayer','Dear God, thank You for today. Help me reflect with gratitude and rest in Your love. Amen.'];
-  return['Night Prayer','Lord, quiet my heart tonight. Watch over me and help me rest in Your peace. Amen.'];
-}
-const [pt,pp]=prayerForTime();
-const dp=document.getElementById('dailyPrayer');
-if(dp) dp.innerHTML=`<h2>${pt}</h2><p>${pp}</p><button onclick="go('prayer')">Pray Now</button> <button onclick="savePrayer()">Save</button> <button onclick="this.parentElement.style.display='none'">Close</button>`;
-const ptitle=document.getElementById('prayerTitle'); if(ptitle) ptitle.textContent=pt;
-const ptext=document.getElementById('prayerText'); if(ptext) ptext.textContent=pp;
-
-function savePrayer(){
-  let old=localStorage.getItem('prayerJournal')||'';
-  localStorage.setItem('prayerJournal',old+'\n'+new Date().toLocaleString()+': '+pt+' — '+pp+'\n');
-  let pj=document.getElementById('prayerJournal');
-  if(pj)pj.value=localStorage.getItem('prayerJournal')||'';
-}
-function flipCard(){let r=document.getElementById('recall'); if(r) r.textContent='Answer: Genesis 1:1 — In the beginning God created the heavens and the earth.'}
-function speakHebrew(){let u=new SpeechSynthesisUtterance('Bereshit');u.rate=.75;speechSynthesis.speak(u)}
-function createYear(){let years=JSON.parse(localStorage.getItem('years')||'[]');years.push({started:new Date().toLocaleDateString(),name:'Bible Journey Year '+(years.length+1)});localStorage.setItem('years',JSON.stringify(years));let ys=document.getElementById('yearStatus');if(ys)ys.textContent='New Bible year created! Past years are preserved.'}
-
-let drawColor='#4f3d36';
-let drawSize=4;
-function setColor(c){drawColor=c}
-function setSize(s){drawSize=s}
-
-function setupCanvas(id){
-  const canvas=document.getElementById(id);
-  if(!canvas)return;
-  const ctx=canvas.getContext('2d');
-  canvas.style.touchAction='none';
-
-  function resize(){
-    const data=localStorage.getItem(id);
-    const rect=canvas.getBoundingClientRect();
-    if(rect.width === 0 || rect.height === 0) return;
-    canvas.width=rect.width*devicePixelRatio;
-    canvas.height=rect.height*devicePixelRatio;
-    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-    ctx.lineCap='round';
-    ctx.lineJoin='round';
-    if(data){
-      let img=new Image();
-      img.onload=()=>ctx.drawImage(img,0,0,rect.width,rect.height);
-      img.src=data;
-    }
-  }
-  canvas._resize=resize;
-  setTimeout(resize,200);
-
-  let drawing=false;
-  let last=null;
-
-  function getPointFromEvent(e){
-    const r=canvas.getBoundingClientRect();
-    let p=e.touches ? e.touches[0] : (e.changedTouches ? e.changedTouches[0] : e);
-    return {x:p.clientX-r.left, y:p.clientY-r.top};
-  }
-
-  function start(e){
-    if(e.cancelable) e.preventDefault();
-    drawing=true;
-    last=getPointFromEvent(e);
-  }
-
-  function move(e){
-    if(!drawing)return;
-    if(e.cancelable) e.preventDefault();
-    let p=getPointFromEvent(e);
-    ctx.strokeStyle=drawColor;
-    ctx.lineWidth=drawSize;
-    ctx.beginPath();
-    ctx.moveTo(last.x,last.y);
-    ctx.lineTo(p.x,p.y);
-    ctx.stroke();
-    last=p;
-  }
-
-  function end(e){
-    if(e && e.cancelable) e.preventDefault();
-    drawing=false;
-    try{localStorage.setItem(id,canvas.toDataURL())}catch(err){}
-  }
-
-  // Pointer events: Apple Pencil / stylus / mouse
-  canvas.addEventListener('pointerdown',start,{passive:false});
-  canvas.addEventListener('pointermove',move,{passive:false});
-  canvas.addEventListener('pointerup',end,{passive:false});
-  canvas.addEventListener('pointercancel',end,{passive:false});
-  canvas.addEventListener('pointerleave',end,{passive:false});
-
-  // Touch fallback: many off-brand pencils act like touch in Safari
-  canvas.addEventListener('touchstart',start,{passive:false});
-  canvas.addEventListener('touchmove',move,{passive:false});
-  canvas.addEventListener('touchend',end,{passive:false});
-  canvas.addEventListener('touchcancel',end,{passive:false});
-
-  // Mouse fallback
-  canvas.addEventListener('mousedown',start);
-  canvas.addEventListener('mousemove',move);
-  window.addEventListener('mouseup',end);
-}
-
-function resizeCanvases(){['draw','colorCanvas','journalCanvas'].forEach(id=>{let c=document.getElementById(id);if(c&&c._resize)c._resize()})}
-function clearCanvas(id){const c=document.getElementById(id);if(!c)return;c.getContext('2d').clearRect(0,0,c.width,c.height);localStorage.removeItem(id)}
-
-setupCanvas('draw');
-setupCanvas('colorCanvas');
-setupCanvas('journalCanvas');
-window.addEventListener('resize',resizeCanvases);
-window.addEventListener('orientationchange',()=>setTimeout(resizeCanvases,300));
-
-document.querySelectorAll('textarea,input:not([type])').forEach(e=>{
-  if(!e.id)return;
-  e.value=localStorage.getItem(e.id)||'';
-  e.addEventListener('input',()=>localStorage.setItem(e.id,e.value));
-});
-
-function weatherDemo(){
-  const layer=document.getElementById('weatherLayer');
-  if(!layer)return;
-  const m=new Date().getMinutes()%3;
-  layer.className=m===0?'snow':m===1?'rain':'wind';
-}
-weatherDemo();
+const visitors=['🦌 Tikvah','🐇 Arnav','🐻 Boaz','🦊 Tamar','🐦 Shirah','🐝 Dvorah','🦉 Ezra','🐿️ Netzer','🦨 Perach','🦝 Mayan','🐼 Hadassah','🐌 Menucha','🦔 Gefen','🐿️ Chazak','🐍 Nachash','🦋 Nitzan','🪲 Ziv','✨ Or'];let ve=document.getElementById('visitor');if(ve)ve.textContent=visitors[new Date().getDate()%visitors.length];
+function prayerForTime(){let h=new Date().getHours();if(h>=5&&h<11)return['Morning Prayer','Dear God, thank You for this new day. Fill my heart with peace and joy as I seek You today. Amen.'];if(h>=11&&h<16)return['Midday Prayer','Lord, meet me in the middle of this day. Help me pause, breathe, and remember Your goodness. Amen.'];if(h>=16&&h<20)return['Evening Prayer','Dear God, thank You for today. Help me reflect with gratitude and rest in Your love. Amen.'];return['Night Prayer','Lord, quiet my heart tonight. Watch over me and help me rest in Your peace. Amen.']}const [pt,pp]=prayerForTime();let dp=document.getElementById('dailyPrayer');if(dp)dp.innerHTML=`<h2>${pt}</h2><p>${pp}</p><button onclick="go('prayer')">Pray Now</button><button onclick="savePrayer()">Save</button><button onclick="this.parentElement.style.display='none'">Close</button>`;
+function renderAll(){let c=chapters[currentChapter];if(!c)return;document.getElementById('chapterTitle').textContent=(currentChapter===1?'🌅 ':'🌿 ')+c.title;document.getElementById('chapterLead').textContent=c.lead;document.getElementById('chapterCards').innerHTML='<div class="card honey"><h2>🍯 Honey Drop</h2><p>'+c.honey+'</p></div><div class="dayCards">'+c.cards.map(x=>'<div class="card"><p>'+x+'</p></div>').join('')+'</div>';document.getElementById('readTitle').textContent='📖 '+c.title+' — Side by Side Reading';document.getElementById('readContent').innerHTML='<div class="split"><div class="card"><h2>WEB</h2>'+c.read.map(v=>'<p>'+v+'</p>').join('')+'</div><div class="card"><h2>CJB</h2><p><i>CJB text can be added here with permission/license.</i></p><p><i>Verse alignment is ready.</i></p></div></div><div class="card honey"><h2>🍯 Honey Drop</h2><p>'+c.honey+'</p></div>';document.getElementById('memoryTitle').textContent='🌿 '+c.title+' Memory Garden';document.getElementById('memoryVerse').textContent='“'+c.memory+'”';document.getElementById('memoryHebrew').textContent=c.hebrew;document.getElementById('memoryHebrewMeaning').textContent=c.translit+' — '+c.meaning;document.getElementById('wordGrid').textContent=c.words.join(' • ');document.getElementById('hebrewTitle').textContent='✡️ '+c.title+' Hebrew Honey Drop';document.getElementById('hebrewContent').innerHTML='<div class="card"><p class="bigHebrew">'+c.hebrew+'</p><h2>'+c.translit+'</h2><p><b>Sounds like:</b> '+c.sound+'</p><p><b>English:</b> '+c.meaning+'</p><p><b>Honey Thought:</b> '+c.honey+'</p><button onclick="speakHebrew()">🔊 Hear pronunciation</button></div>';document.getElementById('comicTitle').textContent='🐇 '+c.title+' Graphic Novel Story';document.getElementById('comicContent').innerHTML=c.comic.map((p,i)=>'<div class="panel '+(i==0?'dark':i==1?'light':'')+'"><h2>'+p[0]+'</h2><p>'+p[1]+'</p></div>').join('');document.getElementById('journalTitle').textContent='✍️ '+c.title+' Leather Journal';document.getElementById('colorTitle').textContent='🎨 '+c.title+' Coloring Page';document.getElementById('colorSvg').innerHTML=c.color;document.getElementById('prayerTitlePage').textContent='🙏 '+c.title+' Prayer Garden';document.getElementById('prayerTitle').textContent=c.title+' Prayer';document.getElementById('prayerText').textContent=c.prayer}
+renderAll();
+function savePrayer(){let old=localStorage.getItem('prayerJournal')||'';localStorage.setItem('prayerJournal',old+'\\n'+new Date().toLocaleString()+': '+chapters[currentChapter].prayer+'\\n');let pj=document.getElementById('prayerJournal');if(pj)pj.value=localStorage.getItem('prayerJournal')||''}
+function flipCard(){let r=document.getElementById('recall');if(r)r.textContent='Answer: '+chapters[currentChapter].title+' — '+chapters[currentChapter].memory}
+function speakHebrew(){let u=new SpeechSynthesisUtterance(chapters[currentChapter].translit);u.rate=.75;speechSynthesis.speak(u)}
+function createYear(){let years=JSON.parse(localStorage.getItem('years')||'[]');years.push({started:new Date().toLocaleDateString(),name:'Bible Journey Year '+(years.length+1)});localStorage.setItem('years',JSON.stringify(years));document.getElementById('yearStatus').textContent='New Bible year created! Past years are preserved.'}
+let drawColor='#4f3d36',drawSize=4,brush='pencil',history={};function setColor(c){drawColor=c}function setSize(s){drawSize=s}function setBrush(b){brush=b}
+const colors=['#4f3d36','#8a6f4d','#6f7f57','#9fb38a','#7aa6a1','#7ab6d6','#b9a7d8','#d98b91','#c56f3f','#f4c66a','#fff6c7','#ffffff'];['palette','palette2'].forEach(id=>{let el=document.getElementById(id);if(el)el.innerHTML=colors.map(c=>'<button style="background:'+c+'" onclick="setColor(\\''+c+'\\')"></button>').join('')});
+function setupCanvas(id){const canvas=document.getElementById(id);if(!canvas)return;const ctx=canvas.getContext('2d');canvas.style.touchAction='none';history[id]=[];function resize(){let data=localStorage.getItem(id);let r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;canvas.width=r.width*devicePixelRatio;canvas.height=r.height*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.lineCap='round';ctx.lineJoin='round';if(data){let img=new Image();img.onload=()=>ctx.drawImage(img,0,0,r.width,r.height);img.src=data}}canvas._resize=resize;setTimeout(resize,200);let drawing=false,last=null;function pos(e){let r=canvas.getBoundingClientRect();let p=e.touches?e.touches[0]:(e.changedTouches?e.changedTouches[0]:e);return{x:p.clientX-r.left,y:p.clientY-r.top}}function start(e){if(e.cancelable)e.preventDefault();history[id].push(canvas.toDataURL());drawing=true;last=pos(e)}function move(e){if(!drawing)return;if(e.cancelable)e.preventDefault();let p=pos(e);ctx.globalAlpha=brush==='watercolor'?.32:brush==='pastel'?.55:1;ctx.strokeStyle=drawColor;ctx.lineWidth=brush==='marker'?drawSize*1.5:brush==='pen'?Math.max(2,drawSize*.6):drawSize;ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.globalAlpha=1;last=p}function end(e){if(e&&e.cancelable)e.preventDefault();drawing=false;try{localStorage.setItem(id,canvas.toDataURL())}catch(err){}}canvas.addEventListener('pointerdown',start,{passive:false});canvas.addEventListener('pointermove',move,{passive:false});canvas.addEventListener('pointerup',end,{passive:false});canvas.addEventListener('touchstart',start,{passive:false});canvas.addEventListener('touchmove',move,{passive:false});canvas.addEventListener('touchend',end,{passive:false})}
+function resizeCanvases(){['draw','colorCanvas'].forEach(id=>{let c=document.getElementById(id);if(c&&c._resize)c._resize()})}function clearCanvas(id){let c=document.getElementById(id);if(!c)return;c.getContext('2d').clearRect(0,0,c.width,c.height);localStorage.removeItem(id)}function undoCanvas(id){let c=document.getElementById(id);if(!c||!history[id]||!history[id].length)return;let data=history[id].pop(),img=new Image(),ctx=c.getContext('2d');img.onload=()=>{ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(img,0,0,c.getBoundingClientRect().width,c.getBoundingClientRect().height);localStorage.setItem(id,c.toDataURL())};img.src=data}
+setupCanvas('draw');setupCanvas('colorCanvas');window.addEventListener('resize',resizeCanvases);window.addEventListener('orientationchange',()=>setTimeout(resizeCanvases,300));
+document.querySelectorAll('textarea,input:not([type])').forEach(e=>{if(!e.id)return;e.value=localStorage.getItem(e.id)||'';e.addEventListener('input',()=>localStorage.setItem(e.id,e.value))});
+function weatherDemo(){let layer=document.getElementById('weatherLayer');if(!layer)return;let m=new Date().getMinutes()%3;layer.className=m===0?'snow':m===1?'rain':'wind'}weatherDemo();

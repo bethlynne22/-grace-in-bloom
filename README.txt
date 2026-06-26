@@ -1,1 +1,1 @@
-Grace in Bloom Color Palette Update. Upload styles.css only to GitHub and replace the old styles.css.
+Upload index.html, styles.css, app.js, manifest.json, icon.svg, dashboard.png to GitHub.

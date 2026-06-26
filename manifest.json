@@ -3,8 +3,8 @@
   "short_name": "Grace in Bloom",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fff7ea",
-  "theme_color": "#d98b91",
+  "background_color": "#eef6e8",
+  "theme_color": "#7a4a2c",
   "icons": [
     {
       "src": "icon.svg",
