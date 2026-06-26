@@ -1,1 +1,1 @@
-Grace in Bloom v0.2 — richer Phase 1 update. Upload index.html, styles.css, app.js, manifest.json to GitHub to replace the earlier shell.
+Upload index.html, styles.css, app.js, manifest.json, and icon.svg to GitHub root to replace the prior version.
