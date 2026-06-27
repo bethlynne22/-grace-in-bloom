@@ -1,93 +1,57 @@
-let selected = null;
-let step = 1;
-const selectedBox = document.getElementById('selected');
-const output = document.getElementById('cssOutput');
+const panel = document.getElementById('panel');
+const content = document.getElementById('panelContent');
+const closePanel = document.getElementById('closePanel');
 
-function pct(num){ return Number(num.toFixed(3)); }
-
-function getVals(el){
-  return {
-    left: parseFloat(el.style.left || getComputedStyle(el).left) / el.parentElement.clientWidth * 100,
-    top: parseFloat(el.style.top || getComputedStyle(el).top) / el.parentElement.clientHeight * 100,
-    width: parseFloat(el.style.width || getComputedStyle(el).width) / el.parentElement.clientWidth * 100,
-    height: parseFloat(el.style.height || getComputedStyle(el).height) / el.parentElement.clientHeight * 100,
-  };
-}
-
-function setVals(el, v){
-  el.style.left = pct(v.left) + '%';
-  el.style.top = pct(v.top) + '%';
-  el.style.width = pct(v.width) + '%';
-  el.style.height = pct(v.height) + '%';
-}
-
-function select(el){
-  document.querySelectorAll('.hot').forEach(b => b.classList.remove('selected'));
-  selected = el;
-  el.classList.add('selected');
-  selectedBox.textContent = 'Selected: ' + el.dataset.name + ' — use arrows or drag it';
-}
-
-document.querySelectorAll('.hot').forEach(el => {
-  el.addEventListener('pointerdown', e => {
-    e.preventDefault();
-    select(el);
-    el.setPointerCapture(e.pointerId);
-    const startX = e.clientX, startY = e.clientY;
-    const start = getVals(el);
-    const parent = el.parentElement.getBoundingClientRect();
-
-    function move(ev){
-      const dx = (ev.clientX - startX) / parent.width * 100;
-      const dy = (ev.clientY - startY) / parent.height * 100;
-      setVals(el, {...start, left:start.left+dx, top:start.top+dy});
-    }
-    function up(){
-      el.removeEventListener('pointermove', move);
-      el.removeEventListener('pointerup', up);
-      updateOutput();
-    }
-    el.addEventListener('pointermove', move);
-    el.addEventListener('pointerup', up);
-  });
-});
-
-function nudge(dx,dy,dw=0,dh=0){
-  if(!selected) return;
-  const parent = selected.parentElement.getBoundingClientRect();
-  const v = getVals(selected);
-  setVals(selected, {
-    left: v.left + (dx / parent.width * 100),
-    top: v.top + (dy / parent.height * 100),
-    width: Math.max(2, v.width + (dw / parent.width * 100)),
-    height: Math.max(2, v.height + (dh / parent.height * 100))
-  });
-  updateOutput();
-}
-
-document.getElementById('up').onclick=()=>nudge(0,-step);
-document.getElementById('down').onclick=()=>nudge(0,step);
-document.getElementById('left').onclick=()=>nudge(-step,0);
-document.getElementById('right').onclick=()=>nudge(step,0);
-document.getElementById('wide').onclick=()=>nudge(0,0,step,0);
-document.getElementById('narrow').onclick=()=>nudge(0,0,-step,0);
-document.getElementById('tall').onclick=()=>nudge(0,0,0,step);
-document.getElementById('short').onclick=()=>nudge(0,0,0,-step);
-document.getElementById('step1').onclick=()=>{step=1; selectedBox.textContent='Step set to 1px';};
-document.getElementById('step5').onclick=()=>{step=5; selectedBox.textContent='Step set to 5px';};
-
-function updateOutput(){
-  const lines = [];
-  document.querySelectorAll('.hot').forEach(el=>{
-    const v = getVals(el);
-    lines.push(`.${el.classList[1]}{left:${pct(v.left)}%;top:${pct(v.top)}%;width:${pct(v.width)}%;height:${pct(v.height)}%}`);
-  });
-  output.value = lines.join('\n');
-}
-document.getElementById('copyCss').onclick=()=>{
-  updateOutput();
-  output.select();
-  document.execCommand('copy');
-  selectedBox.textContent='Copied final CSS. Paste/send it to me.';
+const sections = {
+  bible: {
+    title: '📖 Bible',
+    body: `Choose how you want to read today.`,
+    choices: [
+      ['Single Bible', 'Read one version at a time.'],
+      ['Parallel Bible', 'Compare two versions side by side.'],
+      ['Storybook Layout', 'Warm single-column reading.'],
+      ['Traditional Layout', 'Double-column Bible style.'],
+      ['Bible Versions', 'NCV, WEB, CJB, KJV, NKJV, NIV, NASB, ESV, NLT, CSB.'],
+      ['Red Words of Christ', 'Turn red letters on or off.'],
+      ['Color Coding', 'Color by speaker or topic.'],
+      ['Symbolism Cards', 'Tap lamb, wheat, bread, dove, water, fire, and more.']
+    ]
+  },
+  honey: { title: '🍯 Honey Drops', body: 'Daily encouragement, devotional, prayer, reflection, and favorite Honey Drops.', choices: [['Today’s Drop','Open today’s devotional.'], ['Favorites','Saved devotionals.'], ['Prayer Prompt','Pray with today’s verse.']] },
+  hebrew: { title: '🇮🇱 Hebrew Garden', body: 'Learn Hebrew letters, words, biblical names, pronunciation, and flashcards.', choices: [['Hebrew Alphabet','Aleph-Bet lessons.'], ['Word Garden','Bible words and meanings.'], ['Names','Learn the meaning of names.']] },
+  memory: { title: '🌸 Memory Garden', body: 'Memory verses, review games, badges, and gentle practice.', choices: [['Verse Garden','Choose verses.'], ['Review','Practice today.'], ['Games','Matching and fill-in-the-blank.']] },
+  coloring: { title: '🎨 Coloring Garden', body: 'Digital coloring, printable pages, stickers, and Bible scenes.', choices: [['Color Online','Open digital coloring.'], ['Printables','Printable coloring pages.'], ['Bible Animals','Animal pages.']] },
+  comic: { title: '💥 Comic Adventure', body: 'Liam, Mysti & Rye’s Bible Journeys.', choices: [['Start Episode','Begin a Bible journey.'], ['Continue','Pick up where you left off.'], ['Hidden Treasures','Bee, dragonfly, firefly, wheat, flowers, mushrooms.']] },
+  friends: { title: '🐾 Meet Friends', body: 'Meet Liam, Mysti, Rye, and the Grace in Bloom forest friends.', choices: [['Liam, Mysti & Rye','Main cast.'], ['Animal Pairs','Hebrew male names and woodland female names.'], ['Pronunciation','Hear the Hebrew names.']] },
+  maps: { title: '🗺️ Bible Maps', body: 'Explore Bible places, journeys, lands, rivers, mountains, and cities.', choices: [['Genesis Map','Beginning places.'], ['Exodus Route','Wilderness journey.'], ['Jesus’ Ministry','Galilee and Jerusalem.']] },
+  timeline: { title: '⏳ Timeline', body: 'God’s story from Creation to Forever.', choices: [['Creation','Beginning.'], ['Patriarchs','Abraham to Joseph.'], ['Jesus','Life, ministry, resurrection.']] },
+  journal: { title: '📓 Journal Corner', body: 'Write, reflect, remember, draw, and save notes.', choices: [['New Note','Start writing.'], ['Study Notes','Bible study notes.'], ['Gratitude','Thankfulness journal.']] },
+  prayer: { title: '🙏 Prayer Garden', body: 'Prayer requests, answered prayers, gratitude, and prayer calendar.', choices: [['Add Prayer','Write a request.'], ['Answered Prayer','Record praise.'], ['Prayer Calendar','See prayer days.']] },
+  artist: { title: '🎨 Artist Studio', body: 'Draw, paint, create cards, bookmarks, wallpapers, and verse art.', choices: [['Draw','Open canvas.'], ['Cards','Create a card.'], ['Bookmarks','Make a bookmark.']] },
+  verse: { title: '📖 Today’s Verse', body: 'The daily verse card opens here with context, audio, prayer, journal prompt, and symbolism links.', choices: [['Read More','Open verse study.']] },
+  binder: { title: '📚 Study Binder', body: 'Your personal Bible notebook with the Star of David and cross symbol.', choices: [['Notes','Study notes.'], ['Character Studies','People of the Bible.'], ['Word Studies','Hebrew and Greek.']] },
+  music: { title: '🎵 Music Library', body: 'Worship, hymns, kids music, Scripture songs, favorites, and playlists.', choices: [['All Songs','Browse library.'], ['My Favorites','Songs you love.'], ['Create Playlist','Make a playlist.']] },
+  search: { title: '🔍 Search', body: 'Search Bible, notes, songs, devotionals, maps, and friends.', choices: [['Search Everything','Coming next.']] },
+  bookmarks: { title: '🔖 Bookmarks', body: 'Saved verses, pages, maps, songs, and activities.', choices: [['View Bookmarks','Coming next.']] },
+  notes: { title: '📝 Notes', body: 'Quick notes connected to your Study Binder.', choices: [['New Note','Coming next.']] },
+  calendar: { title: '📅 Calendar', body: 'Reading plans, prayer reminders, feast days, and milestones.', choices: [['Open Calendar','Coming next.']] },
+  settings: { title: '⚙️ Settings', body: 'Reading themes, font size, single/parallel Bible, red letters, and color coding.', choices: [['Reading Settings','Coming next.']] }
 };
-updateOutput();
+
+function openSection(key) {
+  const s = sections[key] || sections.bible;
+  content.innerHTML = `
+    <div class="panel-inner">
+      <h1>${s.title}</h1>
+      <p>${s.body}</p>
+      <div class="button-grid">
+        ${s.choices.map(([name, desc]) => `<button class="choice" type="button">${name}<small>${desc}</small></button>`).join('')}
+      </div>
+      <p style="margin-top:18px"><span class="badge">Button test: working</span><span class="badge">Artwork locked</span></p>
+    </div>`;
+  panel.showModal();
+}
+
+document.querySelectorAll('.hotspot').forEach(btn => btn.addEventListener('click', () => openSection(btn.dataset.section)));
+closePanel.addEventListener('click', () => panel.close());
+panel.addEventListener('click', (e) => { if (e.target === panel) panel.close(); });
