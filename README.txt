@@ -1,3 +1,9 @@
-Grace in Bloom v0.2
+Grace in Bloom Web Edition v1.0
 
-Upload index.html to your GitHub Pages repo to replace the old page.
+Upload ALL files and folders to GitHub:
+- index.html
+- css folder
+- js folder
+- pages folder
+
+Important: because this version uses folders, do not upload only index.html.

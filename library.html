@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>📚 Grace in Bloom Library</title>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<header class="site-head"><h1>📚 Grace in Bloom Library</h1><p>Stocked shelves and rose-gold spiral journals</p></header>
+
+    <nav class="nav">
+      <a href="../index.html">🏡 Home</a>
+      <a href="library.html">📚 Library</a>
+      <a href="prayer.html">🙏 Prayer Cottage</a>
+      <a href="kitchen.html">🍞 Kitchen</a>
+      <a href="conservatory.html">🌿 Conservatory</a>
+      <a href="stable.html">🐾 Stable</a>
+    </nav>
+
+<main class="stage">
+  <div class="room-grid">
+    <div class="card"><strong>🔥 Fireplace Nook</strong><div class="fireplace"></div></div>
+    <div class="card"><h2>Stocked Grand Library</h2><p>Classic leather books on the shelf. Rose-gold spiral study journals when opened.</p><p><button onclick="openGenesis()">Open Genesis 1</button></p></div>
+    <div class="card"><strong>🪟 Evening Window</strong><div class="window"><span class="firefly" style="left:18%;top:70%;animation-delay:.2s"></span><span class="firefly" style="left:48%;top:62%;animation-delay:1.5s"></span><span class="firefly" style="left:74%;top:78%;animation-delay:2.8s"></span></div></div>
+  </div>
+  <section class="shelves" id="library"></section>
+</main>
+<div class="modal" id="modal" onclick="if(event.target.id==='modal') closeBook()">
+  <div class="journal">
+    <button class="close" onclick="closeBook()">Close Book</button>
+    <div class="spiral"><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div></div>
+    <div class="pages" id="pages"></div>
+  </div>
+</div>
+
+<footer>Grace in Bloom Web Edition 🌼</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
