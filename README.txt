@@ -1,1 +1,1 @@
-Upload all files: index.html, styles.css, app.js, manifest.json, icon.svg, home-art.png
+Upload/replace: index.html, styles.css, app.js, manifest.json, icon.svg, home-art.png. Then Commit changes in GitHub.

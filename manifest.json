@@ -1,6 +1,6 @@
 {
-  "name": "Grace in Bloom",
-  "short_name": "Grace",
+  "name": "Grace in Bloom Bible Journey",
+  "short_name": "Grace in Bloom",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#eadcc4",
