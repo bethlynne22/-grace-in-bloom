@@ -1,31 +1,50 @@
-*{box-sizing:border-box}
-body{margin:0;background:#2b1d14;font-family:Georgia,serif;color:#4b3327}
-main{min-height:100vh;background:radial-gradient(circle at top,#f7eddb,#5b3a25);padding:8px}
-.tools{max-width:1280px;margin:0 auto 8px;background:#fff8e8;border:3px solid #6d4227;border-radius:16px;padding:10px;text-align:center;font-size:17px;position:sticky;top:0;z-index:50}
-.small{font-size:13px}
-.controls{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
-.controls button{background:#fffdf7;border:2px solid #b7845a;border-radius:12px;padding:8px;font-weight:bold}
-#selected{font-weight:bold;color:#7a4a2c;margin:4px}
-#cssOutput{width:100%;height:80px;border:1px solid #b7845a;border-radius:12px;padding:8px;font-size:12px}
-.home{position:relative;max-width:1280px;margin:auto;border-radius:18px;overflow:hidden;box-shadow:0 18px 60px #0009}
-#homeArt{display:block;width:100%;height:auto}
-.hot{position:absolute;border:3px solid rgba(255,255,255,.95);border-radius:14px;cursor:pointer;z-index:5;touch-action:none;color:#2f1b12;font-weight:bold;font-size:clamp(10px,1.2vw,17px);text-shadow:0 1px 0 #fff;padding:2px;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 2px rgba(0,0,0,.35),0 0 18px rgba(255,255,255,.55)}
-.hot.selected{outline:6px solid #fff;box-shadow:0 0 30px #ffe066,0 0 0 4px #000}
-.genesis{left:15.0%;top:72.8%;width:10.4%;height:12.6%;background:rgba(135,220,120,.58)}
-.parallel{left:26.8%;top:72.8%;width:10.4%;height:12.6%;background:rgba(110,190,255,.58)}
-.honey{left:38.6%;top:72.8%;width:10.4%;height:12.6%;background:rgba(255,214,70,.62)}
-.hebrew{left:50.4%;top:72.8%;width:10.4%;height:12.6%;background:rgba(190,130,255,.58)}
-.memory{left:62.2%;top:72.8%;width:10.4%;height:12.6%;background:rgba(255,165,80,.58)}
-.coloring{left:74.0%;top:72.8%;width:10.4%;height:12.6%;background:rgba(255,145,190,.58)}
-.comic{left:15.0%;top:89.0%;width:10.4%;height:12.4%;background:rgba(110,230,230,.58)}
-.friends{left:26.8%;top:89.0%;width:10.4%;height:12.4%;background:rgba(145,235,120,.58)}
-.maps{left:38.3%;top:89.0%;width:9.4%;height:12.4%;background:rgba(200,150,90,.58)}
-.timeline{left:50.6%;top:89.0%;width:9.8%;height:12.4%;background:rgba(170,170,170,.65)}
-.journal{left:62.6%;top:89.0%;width:10.4%;height:12.4%;background:rgba(180,140,255,.58)}
-.prayer{left:74.4%;top:89.0%;width:10.4%;height:12.4%;background:rgba(255,120,120,.58)}
-.artist{left:86.6%;top:89.0%;width:8.8%;height:12.4%;background:rgba(255,200,120,.58)}
-.search{left:84.6%;top:65.8%;width:6.2%;height:8.2%;background:rgba(180,230,255,.62)}
-.favorites{left:91.2%;top:65.8%;width:6.2%;height:8.2%;background:rgba(255,120,170,.62)}
-.groups{left:84.6%;top:75.3%;width:6.2%;height:8.2%;background:rgba(180,255,180,.62)}
-.plans{left:91.2%;top:75.3%;width:6.2%;height:8.2%;background:rgba(255,220,110,.62)}
-.bible{left:35.5%;top:37.0%;width:30%;height:25%;background:rgba(255,245,150,.28);border:4px dashed rgba(255,255,255,.9);font-size:clamp(18px,2.5vw,34px)}
+:root {
+  --leather: #3a1f12;
+  --leather-dark: #1b0d08;
+  --gold: #d6a14a;
+  --paper: #fff4d2;
+  --ink: #2a160c;
+}
+* { box-sizing: border-box; }
+html, body { margin:0; min-height:100%; background:#100905; color:var(--ink); font-family: Georgia, 'Times New Roman', serif; }
+.app-shell { min-height:100vh; display:grid; place-items:center; padding:8px; }
+.home-stage { position:relative; width:min(100vw, calc(100vh * 1.5)); aspect-ratio: 3 / 2; overflow:hidden; border-radius:12px; box-shadow: 0 20px 70px rgba(0,0,0,.65); }
+.home-art { width:100%; height:100%; display:block; object-fit:cover; user-select:none; -webkit-user-drag:none; }
+.hotspot { position:absolute; border:0; background:rgba(255,255,255,0); border-radius:10px; cursor:pointer; }
+.hotspot:focus-visible { outline: 3px solid #ffe27a; outline-offset: 2px; background: rgba(255,226,122,.18); }
+.hotspot:active { background: rgba(255,226,122,.18); }
+/* Main bottom buttons, positioned over frozen art */
+.bible { left:8.4%; top:69.3%; width:12.0%; height:10.0%; }
+.honey { left:21.0%; top:69.3%; width:12.0%; height:10.0%; }
+.hebrew { left:33.6%; top:69.3%; width:12.0%; height:10.0%; }
+.memory { left:46.2%; top:69.3%; width:12.0%; height:10.0%; }
+.coloring { left:58.8%; top:69.3%; width:12.0%; height:10.0%; }
+.comic { left:8.4%; top:81.9%; width:9.9%; height:11.2%; }
+.friends { left:18.9%; top:81.9%; width:11.2%; height:11.2%; }
+.maps { left:30.7%; top:81.9%; width:11.2%; height:11.2%; }
+.timeline { left:42.5%; top:81.9%; width:11.2%; height:11.2%; }
+.journal { left:54.3%; top:81.9%; width:11.2%; height:11.2%; }
+.prayer { left:66.1%; top:81.9%; width:11.2%; height:11.2%; }
+.artist { left:77.9%; top:81.9%; width:10.8%; height:11.2%; }
+/* Right sidebar */
+.verse { left:82.8%; top:4.5%; width:15.6%; height:14.0%; }
+.side-honey { left:82.8%; top:20.6%; width:15.6%; height:14.0%; }
+.binder { left:82.8%; top:36.7%; width:15.6%; height:14.0%; }
+.music { left:82.8%; top:52.8%; width:15.6%; height:14.0%; }
+.search { left:84.2%; top:70.2%; width:12.8%; height:5.2%; }
+.bookmarks { left:84.2%; top:75.7%; width:12.8%; height:5.2%; }
+.notes { left:84.2%; top:81.2%; width:12.8%; height:5.2%; }
+.calendar { left:84.2%; top:86.7%; width:12.8%; height:5.2%; }
+.settings { left:84.2%; top:92.2%; width:12.8%; height:5.2%; }
+.panel { width:min(720px, 92vw); border:3px solid var(--gold); border-radius:22px; padding:0; background:linear-gradient(#fff8dc, #edd4a4); color:var(--ink); box-shadow: 0 20px 80px rgba(0,0,0,.75); }
+.panel::backdrop { background:rgba(0,0,0,.58); backdrop-filter: blur(2px); }
+.close { position:absolute; top:8px; right:12px; border:2px solid var(--gold); background:var(--leather); color:#fff5d5; border-radius:999px; width:38px; height:38px; font-size:28px; line-height:1; }
+.panel-inner { padding:34px 28px 26px; }
+.panel h1 { margin:0 48px 8px 0; font-size: clamp(28px, 5vw, 42px); }
+.panel p { line-height:1.45; }
+.button-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:12px; margin-top:18px; }
+.choice { background:#5a311c; color:#fff3cf; border:2px solid #d6a14a; border-radius:14px; padding:14px; text-align:left; font:inherit; box-shadow: inset 0 0 0 2px rgba(255,255,255,.08); }
+.choice small { display:block; opacity:.84; margin-top:4px; }
+.badge { display:inline-block; padding:4px 8px; border-radius:999px; background:#6d3b1f; color:#fff3cf; margin:3px; border:1px solid #d6a14a; }
+@media (hover:hover) { .hotspot:hover { background: rgba(255,226,122,.13); outline: 2px dashed rgba(255,226,122,.75); } }
+@media (max-width: 800px) { .app-shell { align-items:start; padding-top:8px; } .home-stage { width:100vw; border-radius:0; } }

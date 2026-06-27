@@ -1,60 +1,46 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grace in Bloom — Calibration Studio</title>
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles.css?v=cal-studio-1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grace in Bloom</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<main>
-  <section class="tools">
-    <b>Grace in Bloom — Calibration Studio</b>
-    <div class="small">Tap a box, then use the buttons. Use 1px for tiny moves, 5px for faster moves.</div>
-    <div id="selected">Selected: none</div>
-    <div class="controls">
-      <button id="up">⬆️ Up</button>
-      <button id="down">⬇️ Down</button>
-      <button id="left">⬅️ Left</button>
-      <button id="right">➡️ Right</button>
-      <button id="wide">↔️ Wider</button>
-      <button id="narrow">↔️ Narrower</button>
-      <button id="tall">↕️ Taller</button>
-      <button id="short">↕️ Shorter</button>
-      <button id="step1">1px</button>
-      <button id="step5">5px</button>
-      <button id="copyCss">Copy Final CSS</button>
-    </div>
-    <textarea id="cssOutput" placeholder="When buttons are perfect, tap Copy Final CSS. Send me this text or screenshot it."></textarea>
-  </section>
+  <main class="app-shell">
+    <section class="home-stage" aria-label="Grace in Bloom home screen">
+      <img src="assets/home-art.png" alt="Grace in Bloom storybook home screen with Liam, Mysti, Rye, animals, Bible, and leather buttons" class="home-art" />
 
-  <section class="home" id="home">
-    <img src="home-art.png?v=cal-studio-1" id="homeArt" alt="Grace in Bloom">
+      <button class="hotspot main bible" data-section="bible" aria-label="Open Bible"></button>
+      <button class="hotspot main honey" data-section="honey" aria-label="Open Honey Drops"></button>
+      <button class="hotspot main hebrew" data-section="hebrew" aria-label="Open Hebrew Garden"></button>
+      <button class="hotspot main memory" data-section="memory" aria-label="Open Memory Garden"></button>
+      <button class="hotspot main coloring" data-section="coloring" aria-label="Open Coloring Garden"></button>
+      <button class="hotspot main comic" data-section="comic" aria-label="Open Comic Adventure"></button>
+      <button class="hotspot main friends" data-section="friends" aria-label="Open Meet Friends"></button>
+      <button class="hotspot main maps" data-section="maps" aria-label="Open Bible Maps"></button>
+      <button class="hotspot main timeline" data-section="timeline" aria-label="Open Timeline"></button>
+      <button class="hotspot main journal" data-section="journal" aria-label="Open Journal Corner"></button>
+      <button class="hotspot main prayer" data-section="prayer" aria-label="Open Prayer Garden"></button>
+      <button class="hotspot main artist" data-section="artist" aria-label="Open Artist Studio"></button>
 
-    <button class="hot genesis" data-name="Genesis">Genesis</button>
-    <button class="hot parallel" data-name="WEB/CJB">WEB/CJB</button>
-    <button class="hot honey" data-name="Honey">Honey</button>
-    <button class="hot hebrew" data-name="Hebrew">Hebrew</button>
-    <button class="hot memory" data-name="Memory">Memory</button>
-    <button class="hot coloring" data-name="Coloring">Coloring</button>
+      <button class="hotspot side verse" data-section="verse" aria-label="Open Today's Verse"></button>
+      <button class="hotspot side side-honey" data-section="honey" aria-label="Open Honey Drops sidebar"></button>
+      <button class="hotspot side binder" data-section="binder" aria-label="Open Study Binder"></button>
+      <button class="hotspot side music" data-section="music" aria-label="Open Music Library"></button>
+      <button class="hotspot side search" data-section="search" aria-label="Open Search"></button>
+      <button class="hotspot side bookmarks" data-section="bookmarks" aria-label="Open Bookmarks"></button>
+      <button class="hotspot side notes" data-section="notes" aria-label="Open Notes"></button>
+      <button class="hotspot side calendar" data-section="calendar" aria-label="Open Calendar"></button>
+      <button class="hotspot side settings" data-section="settings" aria-label="Open Settings"></button>
+    </section>
+  </main>
 
-    <button class="hot comic" data-name="Comic">Comic</button>
-    <button class="hot friends" data-name="Friends">Friends</button>
-    <button class="hot maps" data-name="Maps">Maps</button>
-    <button class="hot timeline" data-name="Timeline">Timeline</button>
-    <button class="hot journal" data-name="Journal">Journal</button>
-    <button class="hot prayer" data-name="Prayer">Prayer</button>
-    <button class="hot artist" data-name="Artist">Artist</button>
+  <dialog id="panel" class="panel">
+    <button id="closePanel" class="close" aria-label="Close">×</button>
+    <div id="panelContent"></div>
+  </dialog>
 
-    <button class="hot search" data-name="Search">Search</button>
-    <button class="hot favorites" data-name="Favorites">Fav</button>
-    <button class="hot groups" data-name="Groups">Groups</button>
-    <button class="hot plans" data-name="Plans">Plans</button>
-
-    <button class="hot bible" data-name="Bible">Bible</button>
-  </section>
-</main>
-<script src="app.js?v=cal-studio-1"></script>
+  <script src="app.js"></script>
 </body>
 </html>
