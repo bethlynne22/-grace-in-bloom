@@ -1,11 +1,3 @@
-Grace in Bloom Stocked Library Prototype
+Grace in Bloom v0.2
 
-Open index.html in a browser.
-
-Includes:
-- Stocked library shelves
-- Five Bible volumes
-- People, creation, animals, kitchen, maps, worship, celebrations, prayer, originals
-- Traditional leather binding displayed on shelf
-- Rose-gold spiral journal when opened
-- Flickering flame, fireflies, shimmer cursor
+Upload index.html to your GitHub Pages repo to replace the old page.
