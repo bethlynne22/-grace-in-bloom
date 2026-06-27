@@ -3,46 +3,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grace in Bloom — Button Calibration</title>
+<title>Grace in Bloom — Calibration Studio</title>
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles.css?v=shell-v100-rc">
+<link rel="stylesheet" href="styles.css?v=cal-studio-1">
 </head>
 <body>
 <main>
-  <section class="notice">
-    <b>Button Calibration Mode</b><br>
-    Tap each colored box. Tell me which box is too high, low, left, or right.
+  <section class="tools">
+    <b>Grace in Bloom — Calibration Studio</b>
+    <div class="small">Tap a box, then use the buttons. Use 1px for tiny moves, 5px for faster moves.</div>
+    <div id="selected">Selected: none</div>
+    <div class="controls">
+      <button id="up">⬆️ Up</button>
+      <button id="down">⬇️ Down</button>
+      <button id="left">⬅️ Left</button>
+      <button id="right">➡️ Right</button>
+      <button id="wide">↔️ Wider</button>
+      <button id="narrow">↔️ Narrower</button>
+      <button id="tall">↕️ Taller</button>
+      <button id="short">↕️ Shorter</button>
+      <button id="step1">1px</button>
+      <button id="step5">5px</button>
+      <button id="copyCss">Copy Final CSS</button>
+    </div>
+    <textarea id="cssOutput" placeholder="When buttons are perfect, tap Copy Final CSS. Send me this text or screenshot it."></textarea>
   </section>
 
-  <section class="home">
-    <img src="home-art.png?v=shell-v100-rc" id="homeArt" alt="Grace in Bloom shell">
+  <section class="home" id="home">
+    <img src="home-art.png?v=cal-studio-1" id="homeArt" alt="Grace in Bloom">
 
-    <button class="hot genesis" data-panel="Genesis Study">Genesis</button>
-    <button class="hot parallel" data-panel="WEB/CJB">WEB/CJB</button>
-    <button class="hot honey" data-panel="Honey Drops">Honey</button>
-    <button class="hot hebrew" data-panel="Hebrew Garden">Hebrew</button>
-    <button class="hot memory" data-panel="Memory Garden">Memory</button>
-    <button class="hot coloring" data-panel="Coloring Garden">Coloring</button>
+    <button class="hot genesis" data-name="Genesis">Genesis</button>
+    <button class="hot parallel" data-name="WEB/CJB">WEB/CJB</button>
+    <button class="hot honey" data-name="Honey">Honey</button>
+    <button class="hot hebrew" data-name="Hebrew">Hebrew</button>
+    <button class="hot memory" data-name="Memory">Memory</button>
+    <button class="hot coloring" data-name="Coloring">Coloring</button>
 
-    <button class="hot comic" data-panel="Comic Adventure">Comic</button>
-    <button class="hot friends" data-panel="Forest Friends">Friends</button>
-    <button class="hot maps" data-panel="Bible Maps">Maps</button>
-    <button class="hot timeline" data-panel="Bible Timeline">Timeline</button>
-    <button class="hot journal" data-panel="Journal">Journal</button>
-    <button class="hot prayer" data-panel="Prayer">Prayer</button>
-    <button class="hot artist" data-panel="Artist Studio">Artist</button>
+    <button class="hot comic" data-name="Comic">Comic</button>
+    <button class="hot friends" data-name="Friends">Friends</button>
+    <button class="hot maps" data-name="Maps">Maps</button>
+    <button class="hot timeline" data-name="Timeline">Timeline</button>
+    <button class="hot journal" data-name="Journal">Journal</button>
+    <button class="hot prayer" data-name="Prayer">Prayer</button>
+    <button class="hot artist" data-name="Artist">Artist</button>
 
-    <button class="hot search" data-panel="Search">Search</button>
-    <button class="hot favorites" data-panel="Favorites">Fav</button>
-    <button class="hot groups" data-panel="Bible Groups">Groups</button>
-    <button class="hot plans" data-panel="Reading Plans">Plans</button>
+    <button class="hot search" data-name="Search">Search</button>
+    <button class="hot favorites" data-name="Favorites">Fav</button>
+    <button class="hot groups" data-name="Groups">Groups</button>
+    <button class="hot plans" data-name="Plans">Plans</button>
 
-    <button class="hot bible" data-panel="Center Bible">Bible</button>
+    <button class="hot bible" data-name="Bible">Bible</button>
   </section>
-
-  <section id="result" class="result">Tap a colored box.</section>
 </main>
-
-<script src="app.js?v=shell-v100-rc"></script>
+<script src="app.js?v=cal-studio-1"></script>
 </body>
 </html>

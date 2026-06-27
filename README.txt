@@ -1,16 +1,9 @@
-Grace in Bloom Shell v1.0 RC Button Calibration
+Grace in Bloom Calibration Studio
 
-Upload/replace all files:
-- index.html
-- styles.css
-- app.js
-- manifest.json
-- icon.svg
-- home-art.png
+Upload/replace all files. Open:
+https://bethlynne22.github.io/-grace-in-bloom/?v=calstudio
 
-Then commit changes.
-
-Open this exact URL:
-https://bethlynne22.github.io/-grace-in-bloom/?v=100
-
-This version shifts all button calibration boxes left and slightly adjusts the Bible hotspot.
+Use the colored boxes:
+- Drag a box with your finger OR tap it and use arrow buttons.
+- Use 5px for big moves, 1px for tiny moves.
+- When perfect, tap Copy Final CSS and send me the text.
