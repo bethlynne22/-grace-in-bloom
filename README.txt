@@ -1,4 +1,4 @@
-Grace in Bloom Shell v0.9.1 Button Calibration Fix
+Grace in Bloom Shell v0.9.2 Button Calibration Fix
 
 Upload/replace all files:
 - index.html
@@ -11,6 +11,6 @@ Upload/replace all files:
 Then commit changes.
 
 Open:
-https://bethlynne22.github.io/-grace-in-bloom/?v=091
+https://bethlynne22.github.io/-grace-in-bloom/?v=092
 
-This version moves the top row, bottom row, right buttons, and Bible hotspot lower.
+This version moves all boxes lower based on your latest iPad screenshot.

@@ -10,25 +10,27 @@ main{min-height:100vh;background:radial-gradient(circle at top,#f7eddb,#5b3a25);
 .hot.selected{outline:6px solid #fff;box-shadow:0 0 30px #ffe066,0 0 0 4px #000}
 
 /* Calibration v1 visible boxes */
-.genesis{left:16.4%;top:68.5%;width:10.4%;height:12.6%;background:rgba(135,220,120,.58)}
-.parallel{left:28.2%;top:68.5%;width:10.4%;height:12.6%;background:rgba(110,190,255,.58)}
-.honey{left:40.0%;top:68.5%;width:10.4%;height:12.6%;background:rgba(255,214,70,.62)}
-.hebrew{left:51.8%;top:68.5%;width:10.4%;height:12.6%;background:rgba(190,130,255,.58)}
-.memory{left:63.6%;top:68.5%;width:10.4%;height:12.6%;background:rgba(255,165,80,.58)}
-.coloring{left:75.4%;top:68.5%;width:10.4%;height:12.6%;background:rgba(255,145,190,.58)}
+.genesis{left:16.4%;top:72.8%;width:10.4%;height:12.6%;background:rgba(135,220,120,.58)}
+.parallel{left:28.2%;top:72.8%;width:10.4%;height:12.6%;background:rgba(110,190,255,.58)}
+.honey{left:40.0%;top:72.8%;width:10.4%;height:12.6%;background:rgba(255,214,70,.62)}
+.hebrew{left:51.8%;top:72.8%;width:10.4%;height:12.6%;background:rgba(190,130,255,.58)}
+.memory{left:63.6%;top:72.8%;width:10.4%;height:12.6%;background:rgba(255,165,80,.58)}
+.coloring{left:75.4%;top:72.8%;width:10.4%;height:12.6%;background:rgba(255,145,190,.58)}
 
-.comic{left:16.4%;top:84.5%;width:10.4%;height:12.4%;background:rgba(110,230,230,.58)}
-.friends{left:28.2%;top:84.5%;width:10.4%;height:12.4%;background:rgba(145,235,120,.58)}
-.maps{left:39.7%;top:84.5%;width:9.4%;height:12.4%;background:rgba(200,150,90,.58)}
-.timeline{left:52.0%;top:84.5%;width:9.8%;height:12.4%;background:rgba(170,170,170,.65)}
-.journal{left:64.0%;top:84.5%;width:10.4%;height:12.4%;background:rgba(180,140,255,.58)}
-.prayer{left:75.8%;top:84.5%;width:10.4%;height:12.4%;background:rgba(255,120,120,.58)}
-.artist{left:88.0%;top:84.5%;width:8.8%;height:12.4%;background:rgba(255,200,120,.58)}
+.comic{left:16.4%;top:89.0%;width:10.4%;height:12.4%;background:rgba(110,230,230,.58)}
+.friends{left:28.2%;top:89.0%;width:10.4%;height:12.4%;background:rgba(145,235,120,.58)}
+.maps{left:39.7%;top:89.0%;width:9.4%;height:12.4%;background:rgba(200,150,90,.58)}
+.timeline{left:52.0%;top:89.0%;width:9.8%;height:12.4%;background:rgba(170,170,170,.65)}
+.journal{left:64.0%;top:89.0%;width:10.4%;height:12.4%;background:rgba(180,140,255,.58)}
+.prayer{left:75.8%;top:89.0%;width:10.4%;height:12.4%;background:rgba(255,120,120,.58)}
+.artist{left:88.0%;top:89.0%;width:8.8%;height:12.4%;background:rgba(255,200,120,.58)}
 
-.search{left:86.0%;top:61.5%;width:6.2%;height:8.2%;background:rgba(180,230,255,.62)}
-.favorites{left:92.6%;top:61.5%;width:6.2%;height:8.2%;background:rgba(255,120,170,.62)}
-.groups{left:86.0%;top:71.0%;width:6.2%;height:8.2%;background:rgba(180,255,180,.62)}
-.plans{left:92.6%;top:71.0%;width:6.2%;height:8.2%;background:rgba(255,220,110,.62)}
-.bible{left:36%;top:32%;width:31%;height:28%;background:rgba(255,245,150,.28);border:4px dashed rgba(255,255,255,.9);font-size:clamp(18px,2.5vw,34px)}
+.search{left:86.0%;top:65.8%;width:6.2%;height:8.2%;background:rgba(180,230,255,.62)}
+.favorites{left:92.6%;top:65.8%;width:6.2%;height:8.2%;background:rgba(255,120,170,.62)}
+.groups{left:86.0%;top:75.3%;width:6.2%;height:8.2%;background:rgba(180,255,180,.62)}
+.plans{left:92.6%;top:75.3%;width:6.2%;height:8.2%;background:rgba(255,220,110,.62)}
+.bible{left:36.5%;top:36.5%;width:30%;height:24%;background:rgba(255,245,150,.28);border:4px dashed rgba(255,255,255,.9);font-size:clamp(18px,2.5vw,34px)}
 
 /* Shell v0.9.1: moved all visible calibration boxes lower based on iPad screenshot. */
+
+/* Shell v0.9.2: stronger downward move from iPad calibration screenshot. */
