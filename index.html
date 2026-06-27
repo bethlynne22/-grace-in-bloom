@@ -3,58 +3,287 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>🌼 Grace in Bloom</title>
-<link rel="stylesheet" href="css/style.css"/>
+<title>Grace in Bloom</title>
+<style>
+:root{
+  --cream:#fff7e8;--paper:#fffaf0;--ink:#382315;--wood:#5a321e;--wood2:#8b5a35;
+  --gold:#d8b45a;--rose:#d8a0a6;--rose2:#ffd8d1;--sage:#6f8d63;--blue:#405d8a;
+  --burg:#7b344a;--crimson:#8e3140;--lav:#7d6098;--night:#1b1d35;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;font-family:Georgia,"Times New Roman",serif;color:var(--cream);
+  background:linear-gradient(180deg,#1c100b,#4b2b18 48%,#160c08);overflow-x:hidden;cursor:none;
+}
+a,button{cursor:none}
+.cursor{
+  position:fixed;width:20px;height:20px;border-radius:50%;pointer-events:none;z-index:9999;
+  background:radial-gradient(circle,#fff 0,#ffe7a5 35%,rgba(255,210,203,.55) 65%,transparent 76%);
+  box-shadow:0 0 16px #fff1b8,0 0 34px var(--rose2);transform:translate(-50%,-50%);
+}
+.spark{
+  position:fixed;width:7px;height:7px;border-radius:50%;pointer-events:none;background:#fff1b8;z-index:9998;
+  box-shadow:0 0 8px #fff;animation:fade .7s linear forwards;
+}
+@keyframes fade{to{opacity:0;transform:translateY(18px) scale(.2)}}
+.site-head{text-align:center;padding:26px 16px 8px}
+.site-head h1{font-size:clamp(2.2rem,7vw,4.6rem);margin:0;text-shadow:0 6px 16px #000;letter-spacing:.03em}
+.site-head p{margin:.45rem 0 0;color:#ffe7c7;font-size:1.08rem}
+.nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:12px 14px 18px;position:sticky;top:0;z-index:50;background:rgba(31,17,10,.7);backdrop-filter:blur(6px)}
+.nav a,.button,button{
+  text-decoration:none;border:2px solid rgba(255,232,185,.75);background:linear-gradient(#fff1ce,#c58a53);
+  color:#3b2112;border-radius:999px;padding:10px 15px;font-weight:bold;box-shadow:0 4px 0 rgba(69,35,17,.65);
+  font-family:Georgia,"Times New Roman",serif;
+}
+.nav a:hover,.button:hover,button:hover{filter:brightness(1.08)}
+.stage{
+  width:min(1240px,96vw);margin:0 auto 36px;border:10px solid rgba(119,76,42,.72);border-radius:32px;
+  background:linear-gradient(130deg,#3f2415,#865332 48%,#2b160e);
+  box-shadow:0 24px 70px rgba(0,0,0,.55), inset 0 0 60px rgba(255,230,175,.12);
+  position:relative;overflow:hidden;padding:20px;
+}
+.stage:before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;
+  background-image:linear-gradient(90deg,transparent 0 48%,rgba(255,255,255,.25) 50%,transparent 52%),
+                   linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
+  background-size:120px 100%,100% 90px;
+}
+.home-scene{
+  position:relative;z-index:1;min-height:720px;border-radius:26px;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 10%,rgba(255,233,175,.95),transparent 22%),
+    linear-gradient(180deg,#8bbbdc 0 30%,#a7c878 31% 58%,#5f7c45 59%);
+  border:4px solid rgba(255,235,194,.45);
+}
+.sun{position:absolute;left:50%;top:48px;width:92px;height:92px;border-radius:50%;background:#fff0a7;box-shadow:0 0 70px #fff0a7;transform:translateX(-50%)}
+.hill{position:absolute;left:-5%;right:-5%;bottom:0;height:285px;background:radial-gradient(ellipse at 30% 100%,#456d3c 0 42%,transparent 43%),radial-gradient(ellipse at 70% 100%,#355f37 0 46%,transparent 47%)}
+.path{position:absolute;left:50%;bottom:0;width:190px;height:260px;background:linear-gradient(180deg,#d8c19b,#9f7c54);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);transform:translateX(-50%);opacity:.9}
+.cottage{position:absolute;left:50%;top:185px;transform:translateX(-50%);width:min(590px,84vw);height:330px}
+.house{position:absolute;left:82px;right:82px;bottom:36px;height:215px;background:linear-gradient(180deg,#f5d8ad,#c98e5c);border:5px solid #5a321e;border-radius:16px;box-shadow:0 16px 25px rgba(0,0,0,.28)}
+.roof{position:absolute;left:36px;right:36px;bottom:232px;height:126px;background:linear-gradient(160deg,#69371e,#b06a3c);clip-path:polygon(50% 0,100% 100%,0 100%);filter:drop-shadow(0 10px 7px rgba(0,0,0,.25))}
+.door{position:absolute;left:50%;bottom:36px;width:88px;height:136px;transform:translateX(-50%);background:linear-gradient(180deg,#5a321e,#3a2113);border:4px solid #2a160c;border-radius:42px 42px 8px 8px}
+.door:after{content:"📚";position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);font-size:1.8rem}
+.window-home{position:absolute;width:78px;height:66px;background:linear-gradient(180deg,#ffeaa9,#7aa0c7);border:5px solid #5a321e;border-radius:10px;box-shadow:0 0 18px rgba(255,230,160,.75);animation:windowGlow 3s infinite alternate}
+@keyframes windowGlow{to{box-shadow:0 0 28px rgba(255,225,132,1)}}
+.w1{left:116px;bottom:148px}.w2{right:116px;bottom:148px}
+.chimney{position:absolute;left:360px;bottom:315px;width:42px;height:78px;background:#6f3d23;border:4px solid #3e2112;border-radius:8px}
+.smoke{position:absolute;left:370px;bottom:390px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.45);animation:smoke 4s infinite ease-in-out}
+.smoke.s2{animation-delay:1.3s;left:390px}.smoke.s3{animation-delay:2.6s;left:356px}
+@keyframes smoke{0%{opacity:0;transform:translateY(0) scale(.5)}40%{opacity:.65}100%{opacity:0;transform:translateY(-95px) scale(1.7)}}
+.porch{position:absolute;left:105px;right:105px;bottom:0;height:78px;background:#7c4b2c;border:4px solid #4a2817;border-radius:12px}
+.rocker{position:absolute;bottom:22px;width:58px;height:58px;border:4px solid #3e2112;border-radius:14px;background:#9f7046}
+.r1{left:145px}.r2{right:145px}
+.rye{position:absolute;left:50%;bottom:18px;width:78px;height:45px;background:#d8b884;border:4px solid #6b4324;border-radius:45% 45% 35% 35%;transform:translateX(28px)}
+.rye:before{content:"";position:absolute;left:-22px;top:4px;width:32px;height:30px;background:#d8b884;border:4px solid #6b4324;border-radius:50%}
+.rye:after{content:"";position:absolute;right:-18px;top:6px;width:34px;height:8px;background:#6b4324;border-radius:999px;transform:rotate(25deg)}
+.hotspot{position:absolute;z-index:4;text-decoration:none;color:#3b2112;background:rgba(255,244,211,.92);border:2px solid rgba(91,50,26,.75);border-radius:18px;padding:9px 12px;font-weight:bold;box-shadow:0 5px 12px rgba(0,0,0,.25)}
+.hotspot:hover{background:#fff7dc;transform:translateY(-2px)}
+.mailbox{left:9%;bottom:270px}.library-link{left:43%;bottom:180px}.prayer{right:8%;bottom:255px}.kitchen{left:10%;bottom:130px}.stable{right:10%;bottom:130px}.pond{right:18%;bottom:54px}.conserv{left:20%;bottom:54px}
+.bird{position:absolute;z-index:3;font-size:2rem;animation:float 5s infinite ease-in-out}.cardinal{left:18%;top:142px}.humming{right:22%;top:182px;animation-delay:1s}.owl{left:12%;top:76px;animation-delay:2s}.robin{right:14%;top:330px;animation-delay:3s}
+@keyframes float{50%{transform:translateY(-10px)}}
+.windchime{position:absolute;left:62%;top:225px;font-size:2.3rem;animation:sway 2.4s infinite ease-in-out;transform-origin:top}
+@keyframes sway{50%{transform:rotate(7deg)}}
+.pond-art{position:absolute;right:70px;bottom:32px;width:230px;height:92px;border-radius:50%;background:radial-gradient(ellipse,#7cc2d2 0 50%,#477b82 72%,transparent 73%);border:3px solid rgba(255,255,255,.25)}
+.pond-art:after{content:"🦆";position:absolute;left:82px;top:24px;font-size:1.7rem}.pond-art:before{content:"🪿";position:absolute;left:126px;top:14px;font-size:1.8rem}
+.flowers{position:absolute;bottom:0;font-size:2rem;letter-spacing:8px;white-space:nowrap;animation:breeze 3s infinite ease-in-out}
+.flowers.left{left:15px}.flowers.right{right:10px}
+@keyframes breeze{50%{transform:translateY(-2px) rotate(.5deg)}}
+.fireflies span,.firefly{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff2a6;box-shadow:0 0 12px #fff2a6;animation:fly 7s infinite ease-in-out;opacity:.85}
+@keyframes fly{0%,100%{opacity:.25;transform:translate(0,0)}50%{opacity:1;transform:translate(34px,-34px)}}
+.section-title{text-align:center;position:relative;z-index:2;margin:8px 0 18px}.section-title h2{font-size:2.2rem;margin:.2rem}.section-title p{color:#ffe7c7}
+.room-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:linear-gradient(180deg,rgba(255,248,220,.18),rgba(49,25,12,.38));border:2px solid rgba(255,235,194,.35);border-radius:22px;padding:16px;box-shadow:inset 0 0 25px rgba(0,0,0,.22)}
+.fireplace{height:135px;border-radius:18px;margin-top:12px;background:radial-gradient(circle at 50% 78%,#ffd86e 0 10%,#ff8a2a 25%,#b8321e 40%,transparent 43%),linear-gradient(180deg,#2b160e,#130805);border:5px solid #7d4b2b;box-shadow:inset 0 0 24px #000,0 0 24px rgba(255,126,49,.25);animation:glow 1.5s infinite alternate ease-in-out}
+@keyframes glow{from{filter:brightness(.9)}to{filter:brightness(1.25)}}
+.window{height:135px;border-radius:18px;margin-top:12px;background:linear-gradient(180deg,#23344f,#102034 70%,#1c120b);border:5px solid #7d4b2b;position:relative;overflow:hidden}
+.shelves{position:relative;z-index:2;margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:18px}
+.shelf{padding:14px;border-radius:20px;background:linear-gradient(180deg,rgba(255,248,220,.16),rgba(63,34,18,.55));border:2px solid rgba(255,235,194,.25);box-shadow:inset 0 0 25px rgba(0,0,0,.18)}
+.shelf h3{margin:0 0 12px;color:#fff1cf;text-shadow:0 2px 4px #211;border-bottom:1px solid rgba(255,238,200,.26);padding-bottom:8px}
+.books{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;min-height:162px}
+.book{width:43px;height:148px;border-radius:6px 10px 10px 6px;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);padding:8px 4px;font-size:.78rem;font-weight:bold;color:#fff8e9;text-align:center;border:1px solid rgba(255,245,207,.35);position:relative;user-select:none;transition:.25s;box-shadow:inset 5px 0 9px rgba(255,255,255,.18),inset -6px 0 10px rgba(0,0,0,.25),3px 6px 10px rgba(0,0,0,.25)}
+.book:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:rgba(255,232,174,.55);box-shadow:0 0 4px rgba(255,232,174,.8)}
+.book:after{content:"✦";position:absolute;bottom:10px;left:50%;transform:translateX(-50%) rotate(180deg);color:#ffe7a5;font-size:.9rem}
+.book:hover{transform:rotate(180deg) translateY(-8px) scale(1.04)}
+.sage{background:linear-gradient(90deg,#4f6a47,#93ab7e,#3f5636)}.blue{background:linear-gradient(90deg,#243d69,#5d79b0,#20355b)}.burg{background:linear-gradient(90deg,#5a2034,#9a4960,#451827)}.crimson{background:linear-gradient(90deg,#6c1d2d,#bb4a55,#501522)}.white{background:linear-gradient(90deg,#d9caa7,#fff8df,#b9904d);color:#3b2618}.rose{background:linear-gradient(90deg,#a96570,#f2c1bd,#8f4c57)}.green{background:linear-gradient(90deg,#526d3c,#9aac72,#41562e)}.brown{background:linear-gradient(90deg,#5b351f,#9a6842,#432514)}.gold{background:linear-gradient(90deg,#9a6b28,#e6bf67,#7d5218)}.purple{background:linear-gradient(90deg,#513968,#8c6ab0,#3b274d)}.teal{background:linear-gradient(90deg,#2e6770,#71aeb3,#214d54)}
+.modal{position:fixed;inset:0;background:rgba(20,10,5,.75);display:none;align-items:center;justify-content:center;z-index:1000;padding:18px}
+.modal.open{display:flex}
+.journal{width:min(1040px,97vw);height:min(690px,92vh);background:linear-gradient(90deg,#e7a3a9 0 6%,#fff8ed 6% 100%);border-radius:26px;border:5px solid #d89da0;color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 35px rgba(216,160,166,.32);display:grid;grid-template-columns:72px 1fr;overflow:hidden;position:relative}
+.spiral{background:linear-gradient(180deg,#ffd8cf,#b86d7a,#ffe5dc);border-right:3px solid #b86d7a;display:flex;flex-direction:column;align-items:center;justify-content:space-around;padding:14px 0}
+.ring{width:34px;height:22px;border:5px solid #fff1e8;border-radius:50%;box-shadow:0 0 12px #fff}
+.close{position:absolute;right:17px;top:13px;z-index:3}
+.pages{padding:32px;overflow:auto;background:linear-gradient(rgba(255,255,255,.67),rgba(255,255,255,.67)),repeating-linear-gradient(#fff8ed,#fff8ed 31px,#efd8be 32px)}
+.pages h2{font-size:2.25rem;margin:0;color:#8f4c57}.tag{color:#84623d;font-style:italic;margin-top:4px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0}.tab{background:#f6d7cf;border:1px solid #d59aa0;border-radius:12px;padding:7px 10px;font-size:.92rem}
+.page-card{background:rgba(255,255,255,.65);border:1px solid #ead0b6;border-radius:18px;padding:16px;margin:14px 0;box-shadow:0 5px 14px rgba(91,52,31,.12)}
+.genesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.art-box{min-height:220px;border-radius:18px;border:2px solid #e2c4a4;background:radial-gradient(circle at 65% 18%,#fff6b4 0 10%,transparent 12%),linear-gradient(180deg,#9ec3e7 0 38%,#d9e5b5 39% 64%,#789b5b 65%);position:relative;overflow:hidden}
+.art-box:before{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:radial-gradient(ellipse at 35% 100%,#4d7b48 0 35%,transparent 36%),radial-gradient(ellipse at 70% 100%,#355f3a 0 38%,transparent 39%)}
+.art-box:after{content:"Creation of the World";position:absolute;left:0;right:0;bottom:18px;text-align:center;font-size:1.55rem;color:white;text-shadow:0 3px 8px #000}
+.scripture{font-size:1.07rem;line-height:1.55}.red{color:#b51d24}.greenword{color:#2e7440;font-weight:bold}.goldword{color:#9a6b15;font-weight:bold}
+.coloring{min-height:230px;border-radius:18px;background:#fff;border:2px solid #222;position:relative;overflow:hidden}.coloring svg{width:100%;height:100%}
+footer{text-align:center;color:#ffe4bd;padding:20px}
+@media(max-width:760px){.journal{grid-template-columns:48px 1fr}.pages{padding:22px 16px}.genesis-grid{grid-template-columns:1fr}.book{height:126px;width:36px;font-size:.68rem}.cottage{top:175px}.home-scene{min-height:760px}}
+</style>
 </head>
 <body>
 <div class="cursor" id="cursor"></div>
-<header class="site-head"><h1>🌼 Grace in Bloom</h1><p>Cottage Home • Click a room to enter</p></header>
+<header class="site-head">
+  <h1>🌼 Grace in Bloom</h1>
+  <p>Cottage Home • Single-file website version 1.1</p>
+</header>
+<nav class="nav">
+  <a href="#home">🏡 Home</a>
+  <a href="#library">📚 Library</a>
+  <a href="#prayer">🙏 Prayer Cottage</a>
+  <a href="#kitchen">🍞 Kitchen</a>
+  <a href="#conservatory">🌿 Conservatory</a>
+  <a href="#stable">🐾 Stable</a>
+</nav>
 
-    <nav class="nav">
-      <a href="index.html">🏡 Home</a>
-      <a href="pages/library.html">📚 Library</a>
-      <a href="pages/prayer.html">🙏 Prayer Cottage</a>
-      <a href="pages/kitchen.html">🍞 Kitchen</a>
-      <a href="pages/conservatory.html">🌿 Conservatory</a>
-      <a href="pages/stable.html">🐾 Stable</a>
-    </nav>
-
-<main class="stage">
+<main class="stage" id="home">
   <section class="home-scene">
-    <div class="sun"></div>
-    <div class="bird owl">🦉</div>
-    <div class="bird cardinal">❤️</div>
-    <div class="bird humming">💚</div>
-    <div class="windchime">🎐</div>
-    <div class="pond-art"></div>
-    <div class="hill"></div>
-
+    <div class="sun"></div><div class="path"></div>
+    <div class="bird owl">🦉</div><div class="bird cardinal">❤️</div><div class="bird humming">💚</div><div class="bird robin">🐦</div>
+    <div class="windchime">🎐</div><div class="pond-art"></div><div class="hill"></div>
+    <div class="flowers left">🌷🌼🌸🌿🌷🌼</div><div class="flowers right">🌸🌿🌼🌷🌸🌿</div>
     <div class="cottage">
       <div class="chimney"></div><div class="smoke"></div><div class="smoke s2"></div><div class="smoke s3"></div>
       <div class="roof"></div>
-      <div class="house">
-        <div class="window-home w1"></div><div class="window-home w2"></div><div class="door"></div>
-      </div>
-      <div class="porch"><div class="rocker r1"></div><div class="rocker r2"></div><div class="rocker r3"></div><div class="rye"></div></div>
+      <div class="house"><div class="window-home w1"></div><div class="window-home w2"></div><a class="door" href="#library" title="Library"></a></div>
+      <div class="porch"><div class="rocker r1"></div><div class="rocker r2"></div><div class="rye"></div></div>
     </div>
-
-    <a class="hotspot mailbox" href="pages/prayer.html">📬 Owl Mail</a>
-    <a class="hotspot library-link" href="pages/library.html">📚 Library</a>
-    <a class="hotspot prayer" href="pages/prayer.html">🙏 Prayer Cottage</a>
-    <a class="hotspot kitchen" href="pages/kitchen.html">🍞 Kitchen</a>
-    <a class="hotspot stable" href="pages/stable.html">🐾 Stable</a>
-    <a class="hotspot pond" href="pages/conservatory.html">🦆 Pond</a>
-    <a class="hotspot conserv" href="pages/conservatory.html">🌿 Conservatory</a>
-
+    <a class="hotspot mailbox" href="#prayer">📬 Owl Mail</a>
+    <a class="hotspot library-link" href="#library">📚 Library</a>
+    <a class="hotspot prayer" href="#prayer">🙏 Prayer Cottage</a>
+    <a class="hotspot kitchen" href="#kitchen">🍞 Kitchen</a>
+    <a class="hotspot stable" href="#stable">🐾 Stable</a>
+    <a class="hotspot pond" href="#conservatory">🦆 Pond</a>
+    <a class="hotspot conserv" href="#conservatory">🌿 Conservatory</a>
     <div class="fireflies">
       <span style="left:20%;top:72%;animation-delay:.2s"></span>
       <span style="left:34%;top:67%;animation-delay:1.2s"></span>
       <span style="left:75%;top:69%;animation-delay:2.1s"></span>
+      <span style="left:58%;top:62%;animation-delay:3.4s"></span>
     </div>
   </section>
 </main>
 
-<footer>Grace in Bloom Web Edition 🌼</footer>
-<script src="js/main.js"></script>
+<section class="stage" id="library">
+  <div class="section-title"><h2>📚 Grand Library</h2><p>Leather bindings on the shelves. Rose-gold spiral journals when opened.</p></div>
+  <div class="room-grid">
+    <div class="card"><strong>🔥 Fireplace Nook</strong><div class="fireplace"></div></div>
+    <div class="card"><h2>Stocked Shelves</h2><p>Tap a book spine to open it.</p><button onclick="openGenesis()">Open Genesis 1</button></div>
+    <div class="card"><strong>🪟 Evening Window</strong><div class="window"><span class="firefly" style="left:18%;top:70%;animation-delay:.2s"></span><span class="firefly" style="left:48%;top:62%;animation-delay:1.5s"></span><span class="firefly" style="left:74%;top:78%;animation-delay:2.8s"></span></div></div>
+  </div>
+  <section class="shelves" id="shelfMount"></section>
+</section>
+
+<section class="stage" id="prayer">
+  <div class="section-title"><h2>🙏 Prayer Cottage</h2><p>Prayer Journal, Prayer Jar, Letters to God, and Answered Prayers.</p></div>
+  <div class="room-grid">
+    <div class="card"><h3>🫙 Prayer Jar</h3><p>Write a prayer, fold it, and place it in the jar. Later, mark answered prayers with ribbons or flowers.</p></div>
+    <div class="card"><h3>📖 Prayer Journal</h3><p>A quiet place for prayers, gratitude, questions, grief, hope, and Scripture reflections.</p></div>
+    <div class="card"><h3>💌 Letters to God</h3><p>Longer prayers can be written like letters and saved as keepsakes.</p></div>
+  </div>
+</section>
+
+<section class="stage" id="kitchen">
+  <div class="section-title"><h2>🍞 Cottage Kitchen</h2><p>Biblical foods, recipes, holiday meals, and cozy drinks.</p></div>
+  <div class="room-grid">
+    <div class="card"><h3>🥖 Bread</h3><p>Flatbread, unleavened bread, manna lessons, and family table ideas.</p></div>
+    <div class="card"><h3>🍯 Honey</h3><p>Honey in Scripture, honeycomb, tea with honey, and honey cakes.</p></div>
+    <div class="card"><h3>🕎 Feast Foods</h3><p>Passover, Hanukkah, Advent, Christmas, Resurrection celebration, and family recipes.</p></div>
+  </div>
+</section>
+
+<section class="stage" id="conservatory">
+  <div class="section-title"><h2>🌿 Conservatory & Pond</h2><p>Bible plants, woodland plants, birds, geese, ducks, and nature journal pages.</p></div>
+  <div class="room-grid">
+    <div class="card"><h3>🌸 Bible Plants</h3><p>Olive, fig, cedar, mustard, hyssop, pomegranate, wheat, barley, and more.</p></div>
+    <div class="card"><h3>🦆 Daily Pond Moment</h3><p>One scene per day: ducks, geese, turtles, frogs, leaves, snow, or peaceful empty water.</p></div>
+    <div class="card"><h3>🐦 Birds</h3><p>Cardinal, owl, robin, oriole, hummingbird, mourning dove, and seasonal visitors.</p></div>
+  </div>
+</section>
+
+<section class="stage" id="stable">
+  <div class="section-title"><h2>🐾 Stable & Friends</h2><p>Bible animals, woodland friends, Rye, and companion care.</p></div>
+  <div class="room-grid">
+    <div class="card"><h3>🐕 Rye's Corner</h3><p>Ball, stick, bone, puzzle cube, snuffle rug, water bowl, and cozy bed.</p></div>
+    <div class="card"><h3>🐑 Bible Animals</h3><p>Sheep, lambs, goats, camels, donkeys, doves, ravens, lions, bears, fish, and more.</p></div>
+    <div class="card"><h3>🛁 Companion Care</h3><p>Gentle care activities that teach kindness toward God's creatures.</p></div>
+  </div>
+</section>
+
+<div class="modal" id="modal" onclick="if(event.target.id==='modal') closeBook()">
+  <div class="journal">
+    <button class="close" onclick="closeBook()">Close Book</button>
+    <div class="spiral"><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div></div>
+    <div class="pages" id="pages"></div>
+  </div>
+</div>
+
+<footer>Upload this one file as <strong>index.html</strong>. No folders needed. 🌼</footer>
+
+<script>
+const cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{
+ cursor.style.left=e.clientX+"px"; cursor.style.top=e.clientY+"px";
+ if(Math.random()<.28){
+  const s=document.createElement("div");s.className="spark";s.style.left=e.clientX+"px";s.style.top=e.clientY+"px";
+  document.body.appendChild(s);setTimeout(()=>s.remove(),700);
+ }
+});
+function closeBook(){document.getElementById("modal").classList.remove("open")}
+function openBook(title,sub,collection,description,contents){
+ document.getElementById("pages").innerHTML=`
+  <h2>${title}</h2><p class="tag">${sub}</p>
+  <div class="tabs"><span class="tab">📖 Read</span><span class="tab">🔗 Links</span><span class="tab">🎨 Coloring</span><span class="tab">📝 Journal</span><span class="tab">🙏 Prayer</span><span class="tab">🌸 Bloom Notes</span></div>
+  <div class="page-card"><h3>${collection}</h3><p>${description}</p></div>
+  <div class="page-card"><h3>Books / Pages Inside</h3><p>${contents}</p></div>
+  <div class="page-card"><h3>Grace in Bloom Links</h3><p>People, places, plants, animals, foods, maps, Hebrew/Greek words, coloring pages, devotionals, and prayer pages can all link back to the exact reading page so you never lose your place.</p></div>`;
+ document.getElementById("modal").classList.add("open");
+}
+function openGenesis(){
+ document.getElementById("pages").innerHTML=`
+  <h2>Volume I — The Beginning</h2><p class="tag">Genesis 1 Starter Book • Rose-Gold Spiral Study Journal</p>
+  <div class="tabs"><span class="tab">📖 Scripture</span><span class="tab">🌸 Bloom Notes</span><span class="tab">🎨 Coloring</span><span class="tab">📝 Journal</span><span class="tab">🌿 Creation</span></div>
+  <div class="genesis-grid">
+    <div class="page-card"><div class="art-box"></div><h3>Genesis 1 — In the Beginning</h3><p><strong>Theme:</strong> God creates order, beauty, and life.</p></div>
+    <div class="page-card scripture">
+      <h3>Reading Sample</h3>
+      <p><sup>1</sup> In the beginning <span class="goldword">God created</span> the heavens and the earth.</p>
+      <p><sup>2</sup> The earth was without form, and void; and darkness was upon the face of the deep. And the <span class="greenword">Spirit of God</span> moved upon the face of the waters.</p>
+      <p><sup>3</sup> And God said, <span class="red">“Let there be light”</span>: and there was light.</p>
+      <p><em>Color coding preview: God, Spirit, and spoken words highlighted softly.</em></p>
+    </div>
+  </div>
+  <div class="page-card"><h3>Bloom Notes</h3><p>Genesis begins with God. Before mountains, oceans, birds, flowers, or people, God already was. Creation is not careless or rushed. It is ordered, beautiful, purposeful, and good.</p></div>
+  <div class="page-card"><h3>Hebrew Word Spotlight</h3><p><strong>Bereshit</strong> — “In the beginning.” The Bible begins by turning our attention to God before everything else.</p></div>
+  <div class="page-card"><h3>Coloring Companion Page</h3><div class="coloring"><svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="480" height="210" rx="18" fill="none" stroke="#222" stroke-width="4"/><circle cx="380" cy="55" r="32" fill="none" stroke="#222" stroke-width="4"/><path d="M40 175 C110 115 170 130 230 75 C285 25 330 70 370 125 C415 178 460 120 480 175" fill="none" stroke="#222" stroke-width="4"/><path d="M35 190 C120 150 185 172 250 140 C320 105 390 148 465 130" fill="none" stroke="#222" stroke-width="3"/><path d="M95 175 L95 105 M75 125 L95 105 L115 125 M80 145 L95 128 L110 145" fill="none" stroke="#222" stroke-width="4"/><path d="M155 172 L155 92 M132 118 L155 92 L180 120 M137 148 L155 126 L177 150" fill="none" stroke="#222" stroke-width="4"/><path d="M60 58 q18 -22 36 0 q-18 18 -36 0z M100 52 q18 -22 36 0 q-18 18 -36 0z" fill="none" stroke="#222" stroke-width="3"/><text x="250" y="210" text-anchor="middle" font-family="Georgia" font-size="22">“In the beginning…”</text></svg></div></div>
+  <div class="page-card"><h3>Journal Prompt</h3><p>Today I noticed God's creativity in: ________________________________</p></div>
+  <div class="page-card"><h3>Prayer</h3><p>Heavenly Father, thank You for creating a world filled with beauty, order, and life. Open my eyes to notice Your handiwork and help me grow in wonder and gratitude. Amen.</p></div>`;
+ document.getElementById("modal").classList.add("open");
+}
+const shelves=[
+ {title:"📖 Holy Scripture",books:[["Volume I — The Beginning","Genesis–Deuteronomy","Scripture Collection","Sage leather. Opens into apple blossom rose-gold journal.","Genesis, Exodus, Leviticus, Numbers, Deuteronomy","sage","genesis"],["Volume II — The Kingdom","Joshua–Esther","Scripture Collection","Royal blue leather. Opens into cedar and crown dividers.","Joshua, Judges, Ruth, Samuel, Kings, Chronicles, Ezra, Nehemiah, Esther","blue"],["Volume III — Wisdom & Praise","Job–Song of Solomon","Scripture Collection","Burgundy leather. Opens with wildflowers, harps, and poetry pages.","Job, Psalms, Proverbs, Ecclesiastes, Song of Solomon","burg"],["Volume IV — The Prophets","Isaiah–Malachi","Scripture Collection","Crimson leather. Opens with lanterns, scrolls, and stars.","Isaiah through Malachi","crimson"],["Volume V — New Covenant","Matthew–Revelation","Scripture Collection","White and gold leather. Opens with stained glass and lilies.","Matthew through Revelation","white"]]},
+ {title:"👩👨 People of the Bible",books:[["Women","Eve to Lydia","People Collection","Profiles, family trees, maps, courage stories, and Scripture links.","Eve, Sarah, Hagar, Rebekah, Leah, Rachel, Miriam, Deborah, Ruth, Esther, Mary, Martha, Lydia","rose"],["Men","Adam to Paul","People Collection","Biographies, timelines, related places, lessons, and Scripture links.","Adam, Noah, Abraham, Moses, David, Daniel, Peter, Paul","brown"],["Children","Young Bible Lives","People Collection","Child-friendly profiles and family discussion pages.","Samuel, Isaac, Miriam, boy with loaves and fishes, Timothy","gold"],["Kings & Queens","Royal Lives","People Collection","Kings, queens, leadership lessons, maps, and timelines.","Saul, David, Solomon, Esther, Herod","blue"]]},
+ {title:"🌿 God's Creation",books:[["Bible Flowers","Lilies & Blooms","Creation Collection","Flower references, photos, art, coloring pages, and devotional notes.","Lilies, roses, wildflowers, almond blossoms","rose"],["Bible Trees","Cedars & Oaks","Creation Collection","Trees in Scripture with maps, meanings, and nature journal pages.","Olive, fig, cedar, oak, acacia, palm","green"],["Plants & Herbs","Hyssop to Mint","Creation Collection","Herbs, plants, growing notes, recipes, and Hebrew word links.","Hyssop, mustard, mint, dill, cumin, aloe","sage"],["Fruits & Vines","Vineyards","Creation Collection","Fruits in Scripture with recipes and garden links.","Grapes, figs, dates, pomegranates, olives","burg"]]},
+ {title:"🐾 God's Creatures",books:[["Farm Animals","Sheep & Goats","Animal Collection","Bible references, care notes, sounds, photos, and coloring pages.","Sheep, lambs, goats, cattle, oxen, donkeys","brown"],["Wild Animals","Lions & Bears","Animal Collection","Wildlife in Scripture and creation care lessons.","Lions, bears, wolves, deer, foxes","crimson"],["Birds","Doves & Eagles","Animal Collection","Bible birds plus cottage birds like cardinal, oriole, hummingbird, owl.","Doves, ravens, eagles, sparrows, quail, owls, cardinals, orioles, hummingbirds","teal"],["Woodland Friends","Cottage Creatures","Animal Collection","Grace in Bloom wildlife and gentle creation lessons.","Rye, geese, ducks, turtles, rabbits, squirrels, hedgehogs","green"]]},
+ {title:"🍞 Biblical Kitchen",books:[["Bread","Daily Bread","Kitchen Collection","Bread in Scripture, flatbreads, unleavened bread, and family recipes.","Manna, flatbread, unleavened bread","gold"],["Honey","Sweetness","Kitchen Collection","Honey in Scripture, bee lessons, honey cakes, and tea ideas.","Honey, honeycomb, milk and honey","gold"],["Feast Foods","Holy Days","Kitchen Collection","Passover, Hanukkah, Advent, Christmas, Easter recipes.","Seder foods, latkes, sufganiyot, hot cross buns","rose"],["Family Recipes","Your Table","Kitchen Collection","A place for personal recipes and Grace in Bloom meals.","Apple pie, cider, soups, bread, tea","brown"]]},
+ {title:"🌼 Grace in Bloom Originals",books:[["Coloring Bible","Annual","Originals","Stained glass, cute Bible themes, cottage scenes, animals, and holidays.","Annual coloring books, Bible stories, seasonal scenes","rose"],["Verse Letters","Scripture Art","Originals","Decorative Bible verse lettering to color with floral borders.","Memory verses, alphabet letters, honey borders","purple"],["Kids Comic Bible","Story Bible","Originals","Original gentle comic Bible with activities and coloring pages.","Creation, Noah, Ruth, David, Jesus, parables","gold"],["Crosswords","365 Pages","Originals","Annual Bible crossword volumes saved by year.","Daily crosswords, family mode, Apple Pencil support","blue"],["Word Searches","365 Pages","Originals","Annual Bible word search volumes saved by year.","Daily word searches, circle with Apple Pencil","green"]]}
+];
+const mount=document.getElementById("shelfMount");
+shelves.forEach(shelf=>{
+ const wrap=document.createElement("div");wrap.className="shelf";wrap.innerHTML=`<h3>${shelf.title}</h3><div class="books"></div>`;
+ const books=wrap.querySelector(".books");
+ shelf.books.forEach(b=>{
+  const el=document.createElement("div");el.className=`book ${b[5]||'brown'}`;el.textContent=b[0];el.title=b[1];
+  el.onclick=()=>b[6]==="genesis"?openGenesis():openBook(b[0],b[1],b[2],b[3],b[4]);
+  books.appendChild(el);
+ });
+ mount.appendChild(wrap);
+});
+</script>
 </body>
 </html>
