@@ -1,1 +1,1 @@
-Upload/replace: index.html, styles.css, app.js, manifest.json, icon.svg, home-art.png. Then Commit changes in GitHub.
+Upload/replace all files. This version keeps the artwork unchanged, enlarges hotspots, and adds tap interactions.

@@ -1,10 +1,10 @@
 {
-  "name": "Grace in Bloom Bible Journey",
-  "short_name": "Grace in Bloom",
+  "name": "Grace in Bloom",
+  "short_name": "Grace",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#eadcc4",
-  "theme_color": "#7a4a2c",
+  "background_color": "#f4ead8",
+  "theme_color": "#6d4227",
   "icons": [
     {
       "src": "icon.svg",

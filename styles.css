@@ -1,1 +1,52 @@
-*{box-sizing:border-box}body{margin:0;background:#2b1d14;font-family:Georgia,serif;color:#4b3327}main{min-height:100vh;background:radial-gradient(circle at top,#f7eddb,#5b3a25);padding:8px}.home{position:relative;max-width:1280px;margin:auto;border-radius:18px;overflow:hidden;box-shadow:0 18px 60px #0009}#homeArt{display:block;width:100%;height:auto}.hot{position:absolute;background:transparent;border:0;border-radius:14px;cursor:pointer}.hot:focus{outline:4px solid rgba(255,220,120,.95)}.genesis{left:17%;top:64%;width:11%;height:13%}.parallel{left:28.5%;top:64%;width:11%;height:13%}.honey{left:40%;top:64%;width:11%;height:13%}.hebrew{left:51.5%;top:64%;width:11%;height:13%}.memory{left:63%;top:64%;width:11%;height:13%}.coloring{left:74.5%;top:64%;width:11%;height:13%}.comic{left:17%;top:79%;width:11%;height:13%}.friends{left:28.5%;top:79%;width:11%;height:13%}.maps{left:40%;top:79%;width:11%;height:13%}.timeline{left:51.5%;top:79%;width:11%;height:13%}.journal{left:63%;top:79%;width:11%;height:13%}.prayer{left:74.5%;top:79%;width:11%;height:13%}.artist{left:86%;top:79%;width:8%;height:13%}.search{left:86.5%;top:59%;width:6%;height:8%}.favorites{left:93%;top:59%;width:6%;height:8%}.groups{left:86.5%;top:68%;width:6%;height:8%}.plans{left:93%;top:68%;width:6%;height:8%}.bible{left:36%;top:31%;width:32%;height:27%}.modal{position:fixed;inset:3.5%;z-index:10;background:#fff7e6;border:7px solid #6d4227;border-radius:28px;box-shadow:0 25px 80px #000b;padding:24px;overflow:auto}.hidden{display:none}#close{position:sticky;float:right;top:0;background:#6d4227;color:#fff;border:0;width:42px;height:42px;border-radius:50%;font-size:28px}h1{font-size:clamp(30px,5vw,52px);color:#7a4a2c;margin-top:0}h2{color:#5b6d4d}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:#fffdf7;border:1px solid #d8bea5;border-radius:18px;padding:17px;margin:13px 0;box-shadow:0 4px 14px #0002}.honeyCard{background:#fff4c8}.action{background:#fffdf7;border:2px solid #b7845a;border-radius:14px;padding:12px 14px;font-weight:bold;color:#4b3327;margin:5px}.hebrewWord{text-align:center;font-size:68px;margin:10px}.day{border-left:8px solid #b7845a}textarea{width:100%;min-height:180px;border:1px solid #b7845a;border-radius:16px;padding:14px;background:#fffdf7;font:16px Georgia}.comicBook{background:#6d4227;border-radius:24px;padding:18px}.comicPages{background:#f7ead2;border:4px solid #b7845a;border-radius:22px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.panel{border:3px solid #5d3822;border-radius:16px;background:#fff9e9;min-height:190px;padding:12px}.dark{background:linear-gradient(#151525,#3f3654);color:white}.light{background:linear-gradient(#fff8bf,#f6d27a)}.garden{background:linear-gradient(#dfeecf,#fff8df)}.sky{background:linear-gradient(#cce9ff,#fff8df)}.pic{font-size:72px;text-align:center;margin:8px}.bubble{background:white;color:#4b3327;border:2px solid #6d4227;border-radius:20px;padding:10px}.drawCanvas{width:100%;height:400px;background:#fffdf7;border:2px dashed #b7845a;border-radius:18px;touch-action:none}.palette{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.swatch{width:36px;height:36px;border-radius:50%;border:2px solid white;box-shadow:0 0 0 1px #7a4a2c}@media(max-width:800px){.modal{inset:2%;padding:15px}.split,.comicPages{grid-template-columns:1fr}}
+*{box-sizing:border-box}
+body{margin:0;background:#2b1d14;font-family:Georgia,serif;color:#4b3327}
+main{min-height:100vh;background:radial-gradient(circle at top,#f7eddb,#5b3a25);padding:8px}
+.home{position:relative;max-width:1280px;margin:auto;border-radius:18px;overflow:hidden;box-shadow:0 18px 60px #0009}
+#homeArt{display:block;width:100%;height:auto}
+.hot{position:absolute;background:rgba(255,255,255,0);border:0;border-radius:18px;cursor:pointer;z-index:5;touch-action:manipulation;min-width:54px;min-height:54px}
+.hot:focus{outline:4px solid rgba(255,220,120,.95)}
+.hot.tapped{background:rgba(255,235,170,.20);box-shadow:0 0 22px rgba(255,220,120,.9), inset 0 0 18px rgba(255,255,255,.35)}
+/* larger, easier iPad hotspots */
+.genesis{left:15.5%;top:62.5%;width:13.5%;height:15.5%}
+.parallel{left:27.5%;top:62.5%;width:13.5%;height:15.5%}
+.honey{left:39.5%;top:62.5%;width:13.5%;height:15.5%}
+.hebrew{left:51.5%;top:62.5%;width:13.5%;height:15.5%}
+.memory{left:63.5%;top:62.5%;width:13.5%;height:15.5%}
+.coloring{left:75.5%;top:62.5%;width:13.5%;height:15.5%}
+.comic{left:15.5%;top:77.5%;width:13.5%;height:16%}
+.friends{left:27.5%;top:77.5%;width:13.5%;height:16%}
+.maps{left:39.5%;top:77.5%;width:13.5%;height:16%}
+.timeline{left:51.5%;top:77.5%;width:13.5%;height:16%}
+.journal{left:63.5%;top:77.5%;width:13.5%;height:16%}
+.prayer{left:75.5%;top:77.5%;width:13.5%;height:16%}
+.artist{left:87.5%;top:77.5%;width:10%;height:16%}
+.search{left:85.8%;top:57.5%;width:7.2%;height:9.5%}
+.favorites{left:92.5%;top:57.5%;width:7.2%;height:9.5%}
+.groups{left:85.8%;top:66.5%;width:7.2%;height:9.5%}
+.plans{left:92.5%;top:66.5%;width:7.2%;height:9.5%}
+.bible{left:34%;top:28%;width:36%;height:32%}
+
+#effectLayer{position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden}
+.sparkle,.petal{position:fixed;pointer-events:none;animation:rise 900ms ease-out forwards;font-size:24px}
+.petal{animation:drift 1200ms ease-out forwards}
+@keyframes rise{0%{opacity:1;transform:translateY(0) scale(.8)}100%{opacity:0;transform:translateY(-70px) scale(1.4)}}
+@keyframes drift{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(55px,80px) rotate(160deg)}}
+
+.bookPage{position:fixed;inset:3%;z-index:15;background:linear-gradient(90deg,#6d4227 0,#8a5632 3%,#fff7e6 4%,#fffaf0 96%,#8a5632 97%,#6d4227 100%);border:7px solid #6d4227;border-radius:28px;box-shadow:0 25px 80px #000b;padding:28px;overflow:auto;transform-origin:center;animation:openBook 280ms ease-out}
+@keyframes openBook{from{opacity:.2;transform:scale(.92) rotateY(8deg)}to{opacity:1;transform:scale(1) rotateY(0)}}
+.hidden{display:none}
+#close{position:sticky;float:right;top:0;background:#6d4227;color:#fff;border:0;width:42px;height:42px;border-radius:50%;font-size:28px;z-index:5}
+h1{font-size:clamp(30px,5vw,52px);color:#7a4a2c;margin-top:0}
+h2{color:#5b6d4d}.lead{font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:#fffdf7;border:1px solid #d8bea5;border-radius:18px;padding:17px;margin:13px 0;box-shadow:0 4px 14px #0002}
+.honeyCard{background:#fff4c8}.action{background:#fffdf7;border:2px solid #b7845a;border-radius:14px;padding:12px 14px;font-weight:bold;color:#4b3327;margin:5px}
+.hebrewWord{text-align:center;font-size:68px}.day{border-left:8px solid #b7845a}
+textarea{width:100%;min-height:180px;border:1px solid #b7845a;border-radius:16px;padding:14px;background:#fffdf7;font:16px Georgia}
+.comicPages{background:#f7ead2;border:4px solid #b7845a;border-radius:22px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.panel{border:3px solid #5d3822;border-radius:16px;background:#fff9e9;min-height:190px;padding:12px}
+.pic{font-size:72px;text-align:center}.bubble{background:white;border:2px solid #6d4227;border-radius:20px;padding:10px}
+.drawCanvas{width:100%;height:400px;background:#fffdf7;border:2px dashed #b7845a;border-radius:18px;touch-action:none}
+.palette{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.swatch{width:36px;height:36px;border-radius:50%;border:2px solid white;box-shadow:0 0 0 1px #7a4a2c}
+@media(max-width:800px){main{padding:3px}.bookPage{inset:2%;padding:15px}.split,.comicPages{grid-template-columns:1fr}}
