@@ -1,55 +1,32 @@
 *{box-sizing:border-box}
 body{margin:0;background:#2b1d14;font-family:Georgia,serif;color:#4b3327}
 main{min-height:100vh;background:radial-gradient(circle at top,#f7eddb,#5b3a25);padding:8px}
+.notice,.result{max-width:1280px;margin:0 auto 8px;background:#fff8e8;border:3px solid #6d4227;border-radius:16px;padding:10px;text-align:center;font-size:18px}
+.result{position:sticky;bottom:8px;z-index:30;font-weight:bold}
 .home{position:relative;max-width:1280px;margin:auto;border-radius:18px;overflow:hidden;box-shadow:0 18px 60px #0009}
 #homeArt{display:block;width:100%;height:auto}
-.hot{position:absolute;background:rgba(255,255,255,0);border:0;border-radius:14px;cursor:pointer;z-index:5;touch-action:manipulation;min-width:48px;min-height:48px}
-.hot:focus{outline:4px solid rgba(255,220,120,.95)}
-.hot.tapped{background:rgba(255,235,170,.22);box-shadow:0 0 22px rgba(255,220,120,.9), inset 0 0 18px rgba(255,255,255,.35)}
+.hot{position:absolute;border:3px solid rgba(255,255,255,.95);border-radius:14px;cursor:pointer;z-index:5;touch-action:manipulation;color:#2f1b12;font-weight:bold;font-size:clamp(10px,1.3vw,18px);text-shadow:0 1px 0 #fff;padding:2px;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 2px rgba(0,0,0,.35),0 0 18px rgba(255,255,255,.55)}
+.hot:active{transform:scale(.97)}
+.hot.selected{outline:6px solid #fff;box-shadow:0 0 30px #ffe066,0 0 0 4px #000}
 
-/* Button Fix v4: rows are separated with gaps so Honey cannot trigger Maps and Timeline cannot trigger Maps. */
-.genesis{left:16.4%;top:63.0%;width:10.4%;height:12.6%}
-.parallel{left:28.2%;top:63.0%;width:10.4%;height:12.6%}
-.honey{left:40.0%;top:63.0%;width:10.4%;height:12.6%}
-.hebrew{left:51.8%;top:63.0%;width:10.4%;height:12.6%}
-.memory{left:63.6%;top:63.0%;width:10.4%;height:12.6%}
-.coloring{left:75.4%;top:63.0%;width:10.4%;height:12.6%}
+/* Calibration v1 visible boxes */
+.genesis{left:16.4%;top:63.0%;width:10.4%;height:12.6%;background:rgba(135,220,120,.58)}
+.parallel{left:28.2%;top:63.0%;width:10.4%;height:12.6%;background:rgba(110,190,255,.58)}
+.honey{left:40.0%;top:63.0%;width:10.4%;height:12.6%;background:rgba(255,214,70,.62)}
+.hebrew{left:51.8%;top:63.0%;width:10.4%;height:12.6%;background:rgba(190,130,255,.58)}
+.memory{left:63.6%;top:63.0%;width:10.4%;height:12.6%;background:rgba(255,165,80,.58)}
+.coloring{left:75.4%;top:63.0%;width:10.4%;height:12.6%;background:rgba(255,145,190,.58)}
 
-.comic{left:16.4%;top:80.0%;width:10.4%;height:12.4%}
-.friends{left:28.2%;top:80.0%;width:10.4%;height:12.4%}
-.maps{left:39.7%;top:80.0%;width:9.4%;height:12.4%}
-.timeline{left:52.0%;top:80.0%;width:9.8%;height:12.4%}
-.journal{left:64.0%;top:80.0%;width:10.4%;height:12.4%}
-.prayer{left:75.8%;top:80.0%;width:10.4%;height:12.4%}
-.artist{left:88.0%;top:80.0%;width:8.8%;height:12.4%}
+.comic{left:16.4%;top:80.0%;width:10.4%;height:12.4%;background:rgba(110,230,230,.58)}
+.friends{left:28.2%;top:80.0%;width:10.4%;height:12.4%;background:rgba(145,235,120,.58)}
+.maps{left:39.7%;top:80.0%;width:9.4%;height:12.4%;background:rgba(200,150,90,.58)}
+.timeline{left:52.0%;top:80.0%;width:9.8%;height:12.4%;background:rgba(170,170,170,.65)}
+.journal{left:64.0%;top:80.0%;width:10.4%;height:12.4%;background:rgba(180,140,255,.58)}
+.prayer{left:75.8%;top:80.0%;width:10.4%;height:12.4%;background:rgba(255,120,120,.58)}
+.artist{left:88.0%;top:80.0%;width:8.8%;height:12.4%;background:rgba(255,200,120,.58)}
 
-.search{left:86.0%;top:57.5%;width:6.2%;height:8.2%}
-.favorites{left:92.6%;top:57.5%;width:6.2%;height:8.2%}
-.groups{left:86.0%;top:67.0%;width:6.2%;height:8.2%}
-.plans{left:92.6%;top:67.0%;width:6.2%;height:8.2%}
-.bible{left:34%;top:28%;width:36%;height:32%}
-
-#effectLayer{position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden}
-.sparkle,.petal{position:fixed;pointer-events:none;animation:rise 900ms ease-out forwards;font-size:24px}
-.petal{animation:drift 1200ms ease-out forwards}
-@keyframes rise{0%{opacity:1;transform:translateY(0) scale(.8)}100%{opacity:0;transform:translateY(-70px) scale(1.4)}}
-@keyframes drift{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(55px,80px) rotate(160deg)}}
-
-.bookPage{position:fixed;inset:3%;z-index:15;background:linear-gradient(90deg,#6d4227 0,#8a5632 3%,#fff7e6 4%,#fffaf0 96%,#8a5632 97%,#6d4227 100%);border:7px solid #6d4227;border-radius:28px;box-shadow:0 25px 80px #000b;padding:28px;overflow:auto;transform-origin:center;animation:openBook 280ms ease-out}
-@keyframes openBook{from{opacity:.2;transform:scale(.92) rotateY(8deg)}to{opacity:1;transform:scale(1) rotateY(0)}}
-.hidden{display:none}
-#close{position:sticky;float:right;top:0;background:#6d4227;color:#fff;border:0;width:42px;height:42px;border-radius:50%;font-size:28px;z-index:5}
-h1{font-size:clamp(30px,5vw,52px);color:#7a4a2c;margin-top:0}
-h2{color:#5b6d4d}.lead{font-size:18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.card{background:#fffdf7;border:1px solid #d8bea5;border-radius:18px;padding:17px;margin:13px 0;box-shadow:0 4px 14px #0002}
-.honeyCard{background:#fff4c8}.action{background:#fffdf7;border:2px solid #b7845a;border-radius:14px;padding:12px 14px;font-weight:bold;color:#4b3327;margin:5px}
-.hebrewWord{text-align:center;font-size:68px}.day{border-left:8px solid #b7845a}
-textarea{width:100%;min-height:180px;border:1px solid #b7845a;border-radius:16px;padding:14px;background:#fffdf7;font:16px Georgia}
-.comicPages{background:#f7ead2;border:4px solid #b7845a;border-radius:22px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.panel{border:3px solid #5d3822;border-radius:16px;background:#fff9e9;min-height:190px;padding:12px}
-.pic{font-size:72px;text-align:center}.bubble{background:white;border:2px solid #6d4227;border-radius:20px;padding:10px}
-.drawCanvas{width:100%;height:400px;background:#fffdf7;border:2px dashed #b7845a;border-radius:18px;touch-action:none}
-.palette{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.swatch{width:36px;height:36px;border-radius:50%;border:2px solid white;box-shadow:0 0 0 1px #7a4a2c}
-@media(max-width:800px){main{padding:3px}.bookPage{inset:2%;padding:15px}.split,.comicPages{grid-template-columns:1fr}}
+.search{left:86.0%;top:57.5%;width:6.2%;height:8.2%;background:rgba(180,230,255,.62)}
+.favorites{left:92.6%;top:57.5%;width:6.2%;height:8.2%;background:rgba(255,120,170,.62)}
+.groups{left:86.0%;top:67.0%;width:6.2%;height:8.2%;background:rgba(180,255,180,.62)}
+.plans{left:92.6%;top:67.0%;width:6.2%;height:8.2%;background:rgba(255,220,110,.62)}
+.bible{left:34%;top:28%;width:36%;height:32%;background:rgba(255,245,150,.28);border:4px dashed rgba(255,255,255,.9);font-size:clamp(18px,2.5vw,34px)}

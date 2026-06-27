@@ -3,44 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grace in Bloom</title>
+<title>Grace in Bloom — Button Calibration</title>
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles.css?v=button-fix-v4">
+<link rel="stylesheet" href="styles.css?v=calibration-v1">
 </head>
 <body>
-<div id="effectLayer"></div>
 <main>
+  <section class="notice">
+    <b>Button Calibration Mode</b><br>
+    Tap each colored box. Tell me which box is too high, low, left, or right.
+  </section>
+
   <section class="home">
-    <img src="home-art.png?v=button-fix-v4" id="homeArt" alt="Grace in Bloom official shell">
+    <img src="home-art.png?v=calibration-v1" id="homeArt" alt="Grace in Bloom shell">
 
-    <button class="hot genesis" data-panel="genesis1" data-effect="page" aria-label="Genesis 1 Study"></button>
-    <button class="hot parallel" data-panel="parallel" data-effect="page" aria-label="WEB CJB Parallel Bible"></button>
-    <button class="hot honey" data-panel="honey" data-effect="sparkle" aria-label="Honey Drops"></button>
-    <button class="hot hebrew" data-panel="hebrew" data-effect="write" aria-label="Hebrew Garden"></button>
-    <button class="hot memory" data-panel="memory" data-effect="pulse" aria-label="Memory Garden"></button>
-    <button class="hot coloring" data-panel="coloring" data-effect="petals" aria-label="Coloring Garden"></button>
+    <button class="hot genesis" data-panel="Genesis Study">Genesis</button>
+    <button class="hot parallel" data-panel="WEB/CJB">WEB/CJB</button>
+    <button class="hot honey" data-panel="Honey Drops">Honey</button>
+    <button class="hot hebrew" data-panel="Hebrew Garden">Hebrew</button>
+    <button class="hot memory" data-panel="Memory Garden">Memory</button>
+    <button class="hot coloring" data-panel="Coloring Garden">Coloring</button>
 
-    <button class="hot comic" data-panel="comic" data-effect="flutter" aria-label="Comic Adventure"></button>
-    <button class="hot friends" data-panel="friends" data-effect="bounce" aria-label="Meet My Forest Friends"></button>
-    <button class="hot maps" data-panel="maps" data-effect="pulse" aria-label="Bible Maps"></button>
-    <button class="hot timeline" data-panel="timeline" data-effect="page" aria-label="Bible Timeline"></button>
-    <button class="hot journal" data-panel="journal" data-effect="page" aria-label="Journal Corner"></button>
-    <button class="hot prayer" data-panel="prayer" data-effect="pulse" aria-label="Prayer Garden"></button>
-    <button class="hot artist" data-panel="artist" data-effect="petals" aria-label="Artist Studio"></button>
+    <button class="hot comic" data-panel="Comic Adventure">Comic</button>
+    <button class="hot friends" data-panel="Forest Friends">Friends</button>
+    <button class="hot maps" data-panel="Bible Maps">Maps</button>
+    <button class="hot timeline" data-panel="Bible Timeline">Timeline</button>
+    <button class="hot journal" data-panel="Journal">Journal</button>
+    <button class="hot prayer" data-panel="Prayer">Prayer</button>
+    <button class="hot artist" data-panel="Artist Studio">Artist</button>
 
-    <button class="hot search" data-panel="search" data-effect="pulse" aria-label="Search"></button>
-    <button class="hot favorites" data-panel="favorites" data-effect="sparkle" aria-label="Favorites"></button>
-    <button class="hot groups" data-panel="groups" data-effect="bounce" aria-label="Bible Groups"></button>
-    <button class="hot plans" data-panel="plans" data-effect="page" aria-label="Reading Plans"></button>
+    <button class="hot search" data-panel="Search">Search</button>
+    <button class="hot favorites" data-panel="Favorites">Fav</button>
+    <button class="hot groups" data-panel="Bible Groups">Groups</button>
+    <button class="hot plans" data-panel="Reading Plans">Plans</button>
 
-    <button class="hot bible" data-panel="genesis1" data-effect="page" aria-label="Open Bible"></button>
+    <button class="hot bible" data-panel="Center Bible">Bible</button>
   </section>
 
-  <section id="modal" class="bookPage hidden">
-    <button id="close">×</button>
-    <div id="content"></div>
-  </section>
+  <section id="result" class="result">Tap a colored box.</section>
 </main>
-<script src="app.js?v=button-fix-v4"></script>
+
+<script src="app.js?v=calibration-v1"></script>
 </body>
 </html>

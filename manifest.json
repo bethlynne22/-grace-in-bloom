@@ -1,6 +1,6 @@
 {
-  "name": "Grace in Bloom",
-  "short_name": "Grace",
+  "name": "Grace in Bloom Button Calibration",
+  "short_name": "Grace Buttons",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f4ead8",
