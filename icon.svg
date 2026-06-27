@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
-<rect width="512" height="512" rx="80" fill="#6d4227"/>
-<rect x="64" y="58" width="384" height="396" rx="38" fill="#f4ead8"/>
-<text x="256" y="220" text-anchor="middle" font-size="70" font-family="Georgia" fill="#4b3327">Grace</text>
-<text x="256" y="300" text-anchor="middle" font-size="56" font-family="Georgia" fill="#4b3327">Bloom</text>
-<text x="256" y="382" text-anchor="middle" font-size="78" font-family="Georgia" fill="#7a4a2c">ב</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" rx="80" fill="#6d4227"/><rect x="64" y="58" width="384" height="396" rx="38" fill="#f4ead8"/><text x="256" y="260" text-anchor="middle" font-size="70" font-family="Georgia" fill="#4b3327">Grace</text><text x="256" y="355" text-anchor="middle" font-size="78" font-family="Georgia" fill="#7a4a2c">ב</text></svg>

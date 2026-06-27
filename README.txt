@@ -1,1 +1,1 @@
-Upload/replace all files. This version keeps the artwork unchanged, enlarges hotspots, and adds tap interactions.
+Upload/replace all files. Button Fix v4 separates Honey/Maps/Timeline hotspots and keeps artwork unchanged.
