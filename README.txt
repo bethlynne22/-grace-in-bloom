@@ -1,9 +1,11 @@
-Grace in Bloom Calibration Studio
+Grace in Bloom Stocked Library Prototype
 
-Upload/replace all files. Open:
-https://bethlynne22.github.io/-grace-in-bloom/?v=calstudio
+Open index.html in a browser.
 
-Use the colored boxes:
-- Drag a box with your finger OR tap it and use arrow buttons.
-- Use 5px for big moves, 1px for tiny moves.
-- When perfect, tap Copy Final CSS and send me the text.
+Includes:
+- Stocked library shelves
+- Five Bible volumes
+- People, creation, animals, kitchen, maps, worship, celebrations, prayer, originals
+- Traditional leather binding displayed on shelf
+- Rose-gold spiral journal when opened
+- Flickering flame, fireflies, shimmer cursor
