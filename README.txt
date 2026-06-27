@@ -1,4 +1,4 @@
-Grace in Bloom Button Calibration Mode
+Grace in Bloom Shell v0.9.1 Button Calibration Fix
 
 Upload/replace all files:
 - index.html
@@ -8,5 +8,9 @@ Upload/replace all files:
 - icon.svg
 - home-art.png
 
-Then commit. You should see colored boxes on top of the artwork.
-Tap each box and tell me what needs to move.
+Then commit changes.
+
+Open:
+https://bethlynne22.github.io/-grace-in-bloom/?v=091
+
+This version moves the top row, bottom row, right buttons, and Bible hotspot lower.
