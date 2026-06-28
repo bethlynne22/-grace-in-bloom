@@ -1,1 +1,1 @@
-Upload creativity-garden.html to GitHub. Open it at /creativity-garden.html. You can also copy this into your main index later.
+Upload index.html to GitHub. This version uses your chosen artwork as the homepage and adds clickable invisible hotspots.
