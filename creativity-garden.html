@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grace in Bloom Creativity Garden</title>
+<style>
+:root{
+  --cream:#fff8e7;
+  --ink:#3b2417;
+  --leather:#5b351f;
+  --gold:#d9b760;
+  --rose:#d99aa5;
+  --sage:#78996b;
+  --sky:#8ec7e8;
+  --wood:#6d4429;
+  --deep:#190d07;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#170d08,#3a1d0f,#160b06);
+  color:var(--cream);
+  font-family:Georgia,"Times New Roman",serif;
+  cursor:none;
+}
+a,button{cursor:none}
+.cursor{
+  position:fixed;width:20px;height:20px;border-radius:50%;
+  pointer-events:none;z-index:9999;
+  background:radial-gradient(circle,#fff 0,#ffeaa7 38%,rgba(255,210,203,.55) 68%,transparent 78%);
+  box-shadow:0 0 18px #fff1b8,0 0 35px #ffd8d1;
+  transform:translate(-50%,-50%);
+}
+.spark{
+  position:fixed;width:7px;height:7px;border-radius:50%;
+  pointer-events:none;background:#fff1b8;z-index:9998;
+  box-shadow:0 0 8px #fff;animation:fade .7s linear forwards;
+}
+@keyframes fade{to{opacity:0;transform:translateY(18px) scale(.2)}}
+header{
+  text-align:center;
+  padding:22px 10px 8px;
+  background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,.05));
+}
+h1{margin:0;font-size:clamp(2rem,6vw,4.3rem);text-shadow:0 6px 16px #000}
+header p{margin:6px 0 0;color:#ffe4bd}
+.nav{
+  position:sticky;top:0;z-index:40;
+  display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
+  padding:10px;background:rgba(35,18,9,.78);backdrop-filter:blur(8px)
+}
+.nav a,.button,button{
+  text-decoration:none;border:2px solid rgba(255,232,185,.85);
+  background:linear-gradient(#fff3d3,#c58a53);
+  color:#3b2112;border-radius:999px;padding:9px 13px;font-weight:bold;
+  box-shadow:0 4px 0 rgba(69,35,17,.65);
+  font-family:Georgia,"Times New Roman",serif
+}
+.nav a:hover,button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.garden{
+  width:min(1180px,96vw);
+  margin:18px auto 32px;
+  border:8px solid #5b351f;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 25px 80px rgba(0,0,0,.7);
+  background:#5d3820;
+}
+.scene{
+  position:relative;
+  min-height:760px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 12%,#fff0a7 0 5%,rgba(255,240,167,.34) 9%,transparent 20%),
+    linear-gradient(180deg,#8dc7ec 0 31%,#b5d584 32% 57%,#5b8b49 58% 100%);
+}
+.mountains{
+  position:absolute;left:-5%;right:-5%;top:128px;height:180px;opacity:.78;
+  background:
+    linear-gradient(135deg,transparent 0 21%,#6b7b86 22% 42%,transparent 43%),
+    linear-gradient(225deg,transparent 0 28%,#566c78 29% 50%,transparent 51%);
+}
+.hills{
+  position:absolute;left:-8%;right:-8%;bottom:0;height:330px;
+  background:
+    radial-gradient(ellipse at 24% 100%,#416e3c 0 38%,transparent 39%),
+    radial-gradient(ellipse at 72% 100%,#2e5d37 0 45%,transparent 46%);
+}
+.path{
+  position:absolute;left:50%;bottom:0;width:280px;height:470px;
+  background:linear-gradient(180deg,#e4caa3,#9d774f);
+  clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);
+  transform:translateX(-50%);
+  opacity:.95;
+}
+.arbor{
+  position:absolute;left:50%;top:170px;transform:translateX(-50%);
+  width:min(480px,82vw);height:210px;z-index:5;
+}
+.arbor:before{
+  content:"";position:absolute;left:40px;right:40px;bottom:0;height:190px;
+  border:14px solid #7b4a2b;border-bottom:0;border-radius:220px 220px 0 0;
+  box-shadow:inset 0 0 0 5px rgba(255,238,190,.2),0 12px 18px rgba(0,0,0,.25);
+}
+.arbor:after{
+  content:"🌹🌿🌸🌿🌻🌿🌹";
+  position:absolute;left:0;right:0;top:-5px;text-align:center;
+  font-size:2rem;text-shadow:0 3px 5px #472;
+  animation:breeze 3s infinite ease-in-out;
+}
+.sign{
+  position:absolute;left:50%;top:110px;transform:translateX(-50%);
+  z-index:6;background:linear-gradient(#8b5a35,#5a321e);
+  border:4px solid #3d2010;border-radius:18px;padding:14px 20px;
+  color:#fff4d4;text-align:center;box-shadow:0 10px 20px rgba(0,0,0,.35);
+}
+.sign h2{margin:0;font-size:clamp(1.3rem,4vw,2.1rem)}
+.sign p{margin:4px 0 0;color:#ffe5bd}
+.station{
+  position:absolute;z-index:10;width:190px;min-height:116px;
+  background:rgba(255,247,220,.94);
+  color:#3b2417;border:3px solid #6d4429;border-radius:20px;
+  padding:12px;text-align:center;text-decoration:none;
+  box-shadow:0 12px 24px rgba(0,0,0,.28);
+  transition:.2s;
+}
+.station:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 0 24px rgba(255,230,160,.9)}
+.station strong{display:block;font-size:1.05rem;margin-bottom:4px}
+.station small{display:block;line-height:1.25}
+.s1{left:7%;top:410px}.s2{left:24%;top:510px}.s3{left:42%;top:425px}.s4{right:24%;top:510px}.s5{right:7%;top:410px}.s6{left:50%;bottom:55px;transform:translateX(-50%)}
+.s6:hover{transform:translateX(-50%) translateY(-6px) scale(1.02)}
+.cottage{
+  position:absolute;right:6%;bottom:130px;width:220px;height:160px;z-index:6;
+}
+.cottage:before{
+  content:"";position:absolute;left:20px;right:20px;bottom:0;height:105px;
+  background:repeating-linear-gradient(0deg,#8c5a35 0 14px,#6e4125 15px 28px);
+  border:5px solid #4b2916;border-radius:14px;
+}
+.cottage:after{
+  content:"";position:absolute;left:0;right:0;bottom:92px;height:80px;
+  background:linear-gradient(160deg,#4d2514,#a86337 65%,#65351d);
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  filter:drop-shadow(0 8px 6px rgba(0,0,0,.28));
+}
+.easel{
+  position:absolute;left:7%;bottom:150px;width:130px;height:150px;z-index:6;
+}
+.easel:before{
+  content:"";position:absolute;left:22px;right:22px;top:0;height:95px;
+  background:#fff8e7;border:5px solid #6d4429;border-radius:8px;
+}
+.easel:after{
+  content:"🎨";position:absolute;left:50%;top:28px;transform:translateX(-50%);font-size:2.6rem;
+}
+.fence{
+  position:absolute;left:8%;right:8%;bottom:18px;height:74px;z-index:7;
+  border-top:10px solid #7b4a2b;border-bottom:10px solid #7b4a2b;
+}
+.fence:before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0 65px,#7b4a2b 66px 78px,transparent 79px 135px);
+}
+.gallery-pages{
+  position:absolute;left:16%;right:16%;bottom:82px;z-index:9;
+  display:flex;justify-content:center;gap:18px;
+}
+.paper{
+  width:72px;height:92px;background:#fff;border:3px solid #3b2417;border-radius:8px;
+  box-shadow:0 6px 10px rgba(0,0,0,.25);
+}
+.paper:nth-child(1):after{content:"🌸";font-size:2rem;display:block;text-align:center;margin-top:24px}
+.paper:nth-child(2):after{content:"✝";font-size:2.5rem;display:block;text-align:center;margin-top:22px;color:#7b344a}
+.paper:nth-child(3):after{content:"🕊️";font-size:2rem;display:block;text-align:center;margin-top:24px}
+.flowers{
+  position:absolute;bottom:0;font-size:2rem;letter-spacing:7px;white-space:nowrap;
+  animation:breeze 3s infinite ease-in-out;z-index:8
+}
+.flowers.left{left:12px}.flowers.right{right:10px}
+@keyframes breeze{50%{transform:translateY(-2px) rotate(.5deg)}}
+.butterfly,.bee,.firefly,.bunny,.deer{
+  position:absolute;z-index:12;animation:float 5s infinite ease-in-out;pointer-events:none;
+}
+.butterfly{left:72%;top:330px;font-size:2rem}
+.bee{left:27%;top:355px;font-size:1.7rem;animation-delay:1s}
+.bunny{left:18%;bottom:96px;font-size:2rem;animation-delay:2s}
+.deer{right:13%;bottom:88px;font-size:2.2rem;animation-delay:3s}
+.firefly{
+  width:6px;height:6px;border-radius:50%;background:#fff2a6;box-shadow:0 0 12px #fff2a6;
+  animation:fly 7s infinite ease-in-out;opacity:.85;
+}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes fly{0%,100%{opacity:.25;transform:translate(0,0)}50%{opacity:1;transform:translate(34px,-34px)}}
+.panel{
+  width:min(1100px,94vw);margin:24px auto;border:4px solid #7d4b2b;border-radius:26px;
+  padding:20px;background:linear-gradient(135deg,#3c2114,#7c4b2c);
+  box-shadow:0 16px 45px rgba(0,0,0,.45)
+}
+.panel h2{margin:0 0 12px;color:#ffe8b8;font-size:clamp(1.6rem,4vw,2.4rem)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:rgba(255,248,230,.12);border:1px solid rgba(255,232,185,.35);border-radius:18px;padding:15px}
+.card h3{margin-top:0;color:#fff1c9}
+.modal{
+  position:fixed;inset:0;background:rgba(20,10,5,.78);
+  display:none;align-items:center;justify-content:center;z-index:1000;padding:18px
+}
+.modal.open{display:flex}
+.book{
+  width:min(930px,96vw);max-height:86vh;overflow:auto;color:#3b2417;
+  background:linear-gradient(90deg,#e7a3a9 0 6%,#fff8ed 6% 100%);
+  border:5px solid #d89da0;border-radius:26px;padding:28px 28px 28px 78px;
+  box-shadow:0 30px 80px rgba(0,0,0,.65);position:relative
+}
+.book:before{
+  content:"";position:absolute;left:24px;top:18px;bottom:18px;width:18px;
+  background:repeating-linear-gradient(#fff1e8 0 16px,#b86d7a 17px 28px);
+  border-radius:999px
+}
+.close{position:absolute;right:16px;top:12px;border:2px solid #8a4b56;background:#f6d7cf;border-radius:999px;padding:8px 12px}
+.tabs span{display:inline-block;background:#f6d7cf;border:1px solid #d59aa0;border-radius:12px;padding:7px 10px;margin:4px}
+.page-card{background:rgba(255,255,255,.62);border:1px solid #ead0b6;border-radius:18px;padding:15px;margin:13px 0}
+.color-sample{
+  min-height:230px;background:#fff;border:3px solid #222;border-radius:14px;padding:12px;
+}
+.color-sample svg{width:100%;height:220px}
+footer{text-align:center;color:#ffe4bd;padding:24px}
+@media(max-width:760px){
+  .garden{width:100vw;border-left:0;border-right:0;border-radius:0}
+  .scene{min-height:900px}
+  .station{width:155px;font-size:.9rem}
+  .s1{left:5%;top:395px}.s2{left:5%;top:525px}.s3{left:50%;top:445px;transform:translateX(-50%)}.s4{right:5%;top:525px}.s5{right:5%;top:395px}.s6{bottom:120px}
+  .cottage{right:2%;bottom:210px;transform:scale(.75)}
+  .easel{left:2%;bottom:220px;transform:scale(.75)}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<header>
+  <h1>🌸 Creativity Garden</h1>
+  <p>Color, letter, craft, make comics, and save artwork in Grace in Bloom.</p>
+</header>
+<nav class="nav">
+  <a href="#garden">🌸 Garden</a>
+  <a href="#coloring">🎨 Coloring</a>
+  <a href="#lettering">✍️ Lettering</a>
+  <a href="#glass">🪟 Stained Glass</a>
+  <a href="#comic">📖 Comic Bible</a>
+  <a href="#crafts">🧺 Crafts</a>
+  <a href="#gallery">🖼️ Gallery</a>
+</nav>
+
+<main class="garden" id="garden">
+  <section class="scene">
+    <div class="mountains"></div><div class="hills"></div><div class="path"></div>
+    <div class="arbor"></div>
+    <div class="sign"><h2>Creativity Garden</h2><p>Where Scripture grows into art</p></div>
+    <a class="station s1" href="#coloring"><strong>🎨 Coloring Arbor</strong><small>Bible coloring books & pages</small></a>
+    <a class="station s2" href="#lettering"><strong>✍️ Verse Walk</strong><small>Scripture lettering & bookmarks</small></a>
+    <a class="station s3" href="#glass"><strong>🪟 Stained Glass</strong><small>Color windows of faith</small></a>
+    <a class="station s4" href="#comic"><strong>📖 Comic Bible</strong><small>Story adventures & panels</small></a>
+    <a class="station s5" href="#crafts"><strong>🧺 Craft Cottage</strong><small>Hands-on Bible crafts</small></a>
+    <a class="station s6" href="#gallery"><strong>🖼️ Gallery Fence</strong><small>Save, display, print</small></a>
+    <div class="cottage"></div><div class="easel"></div><div class="fence"></div>
+    <div class="gallery-pages"><div class="paper"></div><div class="paper"></div><div class="paper"></div></div>
+    <div class="flowers left">🌷🌼🌸🌿🌷🌼</div><div class="flowers right">🌸🌿🌼🌷🌸🌿</div>
+    <div class="butterfly">🦋</div><div class="bee">🐝</div><div class="bunny">🐇</div><div class="deer">🦌</div>
+    <span class="firefly" style="left:42%;top:54%;animation-delay:.2s"></span>
+    <span class="firefly" style="left:50%;top:62%;animation-delay:1.5s"></span>
+    <span class="firefly" style="left:73%;top:55%;animation-delay:2.7s"></span>
+  </section>
+</main>
+
+<section class="panel" id="coloring">
+  <h2>🎨 Coloring Arbor</h2>
+  <div class="grid">
+    <div class="card"><h3>Annual Coloring Bible</h3><p>Each year gets its own coloring book with Bible stories, western wildflowers, animals, holidays, and cottage scenes.</p><button onclick="openColoring()">Open Sample Page</button></div>
+    <div class="card"><h3>Cute Bible Pages</h3><p>Original sweet Bible-themed children, animals, stained glass, and verse pages.</p></div>
+    <div class="card"><h3>Holiday Collections</h3><p>Christmas, Hanukkah, Passover, Resurrection, autumn harvest, spring flowers, and camping pages.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="lettering">
+  <h2>✍️ Verse Lettering Walk</h2>
+  <div class="grid">
+    <div class="card"><h3>Memory Verse Cards</h3><p>Beautiful verse lettering with wildflower borders.</p></div>
+    <div class="card"><h3>Decorative Initials</h3><p>Practice Bible letters, Hebrew letter ב, and illuminated capitals.</p></div>
+    <div class="card"><h3>Bookmarks</h3><p>Printable Scripture bookmarks with leather, wildflower, and stitched designs.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="glass">
+  <h2>🪟 Stained Glass Studio</h2>
+  <div class="grid">
+    <div class="card"><h3>Faith Windows</h3><p>Color stained-glass designs with doves, lilies, crosses, stars, rivers, and Bible scenes.</p></div>
+    <div class="card"><h3>Seasonal Windows</h3><p>Christmas candlelight, Hanukkah glow, Resurrection lilies, and autumn harvest glass.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="comic">
+  <h2>📖 Comic Bible Book</h2>
+  <p>The Comic Bible stays as its own treasured book. It opens into Bible story adventures, character gallery, comic coloring pages, and story creator panels.</p>
+  <button onclick="openComic()">Open Comic Bible Preview</button>
+</section>
+
+<section class="panel" id="crafts">
+  <h2>🧺 Craft Cottage</h2>
+  <div class="grid">
+    <div class="card"><h3>Leather Bookmarks</h3><p>Tooled wildflower bookmark templates with Scripture.</p></div>
+    <div class="card"><h3>Paper Crafts</h3><p>Prayer jars, Bible tabs, memory verse pockets, and holiday crafts.</p></div>
+    <div class="card"><h3>Quilt & Stitch</h3><p>Simple quilt blocks, cross-stitch verse ideas, and cozy cottage crafts.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="gallery">
+  <h2>🖼️ Gallery Fence</h2>
+  <div class="grid">
+    <div class="card"><h3>My Finished Pages</h3><p>Finished coloring pages and verse lettering can live here.</p></div>
+    <div class="card"><h3>Annual Keepsake Books</h3><p>Each year's coloring and lettering pages stay on the shelf forever.</p></div>
+    <div class="card"><h3>Print Center</h3><p>Print coloring pages, bookmarks, crafts, and Bible journaling sheets.</p></div>
+  </div>
+</section>
+
+<div class="modal" id="modal" onclick="if(event.target.id==='modal') closeModal()">
+  <div class="book" id="bookContent">
+    <button class="close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<footer>Grace in Bloom • Creativity Garden v2</footer>
+
+<script>
+const cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{
+  cursor.style.left=e.clientX+"px"; cursor.style.top=e.clientY+"px";
+  if(Math.random()<.22){
+    const s=document.createElement("div");s.className="spark";
+    s.style.left=e.clientX+"px";s.style.top=e.clientY+"px";
+    document.body.appendChild(s);setTimeout(()=>s.remove(),700);
+  }
+});
+function openColoring(){
+  document.getElementById("bookContent").innerHTML=`
+    <button class="close" onclick="closeModal()">Close</button>
+    <h2>Annual Coloring Bible</h2>
+    <p><em>Rose-gold spiral coloring book preview</em></p>
+    <div class="tabs"><span>🎨 Color</span><span>✍️ Trace</span><span>📖 Verse</span><span>🖨️ Print</span></div>
+    <div class="page-card"><h3>Creation Coloring Page</h3><p>Genesis 1 inspired coloring page with mountains, trees, birds, sun, and verse lettering.</p></div>
+    <div class="color-sample">
+      <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="500" height="200" rx="18" fill="none" stroke="#222" stroke-width="4"/>
+        <circle cx="390" cy="55" r="34" fill="none" stroke="#222" stroke-width="4"/>
+        <path d="M35 170 C115 105 175 130 235 70 C290 22 335 72 375 125 C420 180 465 120 498 170" fill="none" stroke="#222" stroke-width="4"/>
+        <path d="M55 188 C130 150 190 170 260 138 C325 110 390 150 470 130" fill="none" stroke="#222" stroke-width="3"/>
+        <path d="M95 175 L95 100 M72 125 L95 100 L120 128 M76 150 L95 128 L116 150" fill="none" stroke="#222" stroke-width="4"/>
+        <path d="M165 175 L165 88 M138 118 L165 88 L192 120 M143 150 L165 126 L188 152" fill="none" stroke="#222" stroke-width="4"/>
+        <path d="M60 60 q18 -22 36 0 q-18 18 -36 0z M105 53 q18 -22 36 0 q-18 18 -36 0z" fill="none" stroke="#222" stroke-width="3"/>
+        <text x="260" y="205" text-anchor="middle" font-family="Georgia" font-size="22">“In the beginning…”</text>
+      </svg>
+    </div>
+  `;
+  document.getElementById("modal").classList.add("open");
+}
+function openComic(){
+  document.getElementById("bookContent").innerHTML=`
+    <button class="close" onclick="closeModal()">Close</button>
+    <h2>Grace in Bloom Comic Bible</h2>
+    <p><em>Stand-alone leather-bound comic book</em></p>
+    <div class="tabs"><span>📖 Stories</span><span>🎭 Characters</span><span>🎨 Coloring</span><span>⭐ Favorites</span></div>
+    <div class="page-card"><h3>Story Adventures</h3><p>Creation, Noah, Abraham, Moses, Ruth, David, Esther, Jesus, miracles, parables, and Acts.</p></div>
+    <div class="page-card"><h3>Style</h3><p>Gentle Hebrew children, warm western wildflowers, Bible animals, family discussion, and coloring pages.</p></div>
+  `;
+  document.getElementById("modal").classList.add("open");
+}
+function closeModal(){document.getElementById("modal").classList.remove("open")}
+</script>
+</body>
+</html>

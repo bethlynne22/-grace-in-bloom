@@ -1,1 +1,1 @@
-Upload only index.html to GitHub and commit. No folders needed.
+Upload creativity-garden.html to GitHub. Open it at /creativity-garden.html. You can also copy this into your main index later.
